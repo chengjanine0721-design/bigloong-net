@@ -309,7 +309,7 @@ def post_card(p):
     <h3><a href="/blog/{p['slug']}/">{p['title']}</a></h3>
     <p>{p['desc']}</p>
     <div class="post-meta">
-      <span class="author">AB</span>
+      <img class="author" src="/assets/img/author-avatar.png" alt="Alice Baker">
       <span>{AUTHOR}</span>
       <span>&middot;</span>
       <span>{p['read']}</span>
@@ -437,7 +437,7 @@ def build_article(p):
     article_ld = {
         "@context": "https://schema.org", "@type": "Article",
         "headline": p["full_h1"], "description": p["desc"],
-        "author": {"@type": "Person", "name": AUTHOR},
+        "author": {"@type": "Person", "name": AUTHOR, "image": "https://" + SITE + "/assets/img/author-avatar.png"},
         "publisher": {"@type": "Organization", "name": "Bigloong"},
         "datePublished": p["date"], "dateModified": p["date"],
         "image": "https://" + SITE + p["image"],
@@ -458,7 +458,7 @@ def build_article(p):
     <span class="eyebrow">{p['cat']}</span>
     <h1>{p['full_h1']}</h1>
     <div class="article-meta">
-      <span class="author">AB</span>
+      <img class="author" src="/assets/img/author-avatar.png" alt="Alice Baker">
       <span>By {AUTHOR}</span>
       <span>&middot;</span>
       <span>{p['read']}</span>
@@ -538,7 +538,7 @@ def build_faq_detail(f):
   <div class="article-main">
     <span class="eyebrow">FAQ</span>
     <h1>{f['q']}</h1>
-    <div class="article-meta"><span class="author">AB</span><span>By {AUTHOR}</span></div>
+    <div class="article-meta"><img class="author" src="/assets/img/author-avatar.png" alt="Alice Baker"><span>By {AUTHOR}</span></div>
     <div class="prose"><p class="article-lead">{f['a']}</p></div>
     <div class="related-box"><h4>Related questions</h4>{related_html}</div>
   </div>
@@ -567,7 +567,7 @@ def build_video_index():
   <div class="post-body">
     <h3><a href="/video-tutorial/{v['slug']}/">{v['title']}</a></h3>
     <p>{v['desc']}</p>
-    <div class="post-meta"><span class="author">AB</span><span>{AUTHOR}</span></div>
+    <div class="post-meta"><img class="author" src="/assets/img/author-avatar.png" alt="Alice Baker"><span>{AUTHOR}</span></div>
     <a class="read-link" href="/video-tutorial/{v['slug']}/">Watch tutorial <span class="arrow">&rarr;</span></a>
   </div>
 </article>'''
@@ -606,7 +606,7 @@ def build_video_detail(v):
   <div class="article-main">
     <span class="eyebrow">Video Tutorial &middot; {v['duration']}</span>
     <h1>{v['title']}</h1>
-    <div class="article-meta"><span class="author">AB</span><span>By {AUTHOR}</span></div>
+    <div class="article-meta"><img class="author" src="/assets/img/author-avatar.png" alt="Alice Baker"><span>By {AUTHOR}</span></div>
     <div class="video-placeholder" style="background:linear-gradient(145deg,{v['c1']},{v['c2']})">
       <span class="vp-play">&#9654;</span>
       <span class="vp-label">Video tutorial coming soon</span>
