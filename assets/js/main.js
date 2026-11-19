@@ -33,31 +33,57 @@
     });
   });
 
-  // Table of contents active highlight on scroll
+  // Table of contents: smooth jump so the target heading lands on the first visible line,
+  // plus active highlight on scroll.
   var tocLinks = document.querySelectorAll('.toc-box a');
   if (tocLinks.length) {
+    // sticky header is 76px tall; keep this much space above the heading
+    var NAV_OFFSET = 96;
     var sections = [];
     tocLinks.forEach(function (a) {
       var id = a.getAttribute('href');
       if (id && id.charAt(0) === '#') {
-        var el = document.querySelector(id);
-        if (el) sections.push({ link: a, el: el });
+        var el = document.getElementById(id.substring(1));
+        if (el) {
+          sections.push({ link: a, el: el });
+          a.addEventListener('click', function (e) {
+            e.preventDefault();
+            var top = el.getBoundingClientRect().top + window.pageYOffset - NAV_OFFSET;
+            if (window.scrollTo) {
+              window.scrollTo({ top: top, behavior: 'smooth' });
+            } else {
+              window.scrollTo(0, top);
+            }
+            if (history.replaceState) history.replaceState(null, '', id);
+            else window.location.hash = id;
+            setActive(a);
+          });
+        }
       }
     });
-    function onScroll() {
-      var pos = window.scrollY + 140;
-      var current = null;
-      sections.forEach(function (s) {
-        if (s.el.offsetTop <= pos) current = s;
-      });
+    function setActive(activeLink) {
       tocLinks.forEach(function (a) {
         a.style.color = '';
         a.style.borderColor = '';
+        a.removeAttribute('data-active');
       });
-      if (current) {
-        current.link.style.color = 'var(--primary)';
-        current.link.style.borderColor = 'var(--primary)';
+      if (activeLink) {
+        activeLink.style.color = 'var(--primary)';
+        activeLink.style.borderColor = 'var(--primary)';
+        activeLink.setAttribute('data-active', '1');
       }
+    }
+    function onScroll() {
+      var pos = window.scrollY + NAV_OFFSET + 8;
+      var current = null;
+      sections.forEach(function (s) {
+        if (s.el.getBoundingClientRect().top + window.pageYOffset <= pos) current = s;
+      });
+      // if scrolled to the very bottom, highlight the last item
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 2 && sections.length) {
+        current = sections[sections.length - 1];
+      }
+      setActive(current ? current.link : null);
     }
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();

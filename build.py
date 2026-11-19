@@ -64,10 +64,10 @@ POSTS = [
         "toc": [
             ("instrument", "1. Get the Right Instrument"),
             ("hand-position", "Hand and Finger Positioning"),
-            ("know-the-keys", "2. Know the Piano and Keys"),
+            ("know-keys", "2. Know the Piano and Keys"),
             ("beginner-songs", "3. Play Beginner Songs"),
             ("how-to-learn", "4. Choose How You Learn"),
-            ("daily-practice", "5. Daily Finger Exercises"),
+            ("finger-exercises", "5. Daily Finger Exercises"),
             ("mistakes", "6. Common Mistakes"),
             ("faq", "FAQ"),
             ("conclusion", "Conclusion"),

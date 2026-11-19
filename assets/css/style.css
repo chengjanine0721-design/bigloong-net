@@ -246,8 +246,8 @@ p{color:var(--muted)}
 .article-meta .author{width:40px;height:40px;border-radius:50%;object-fit:cover;object-position:center top;border:2px solid #fff;box-shadow:0 3px 12px rgba(59,61,112,.2)}
 .article-cover{border-radius:var(--r-lg);height:340px;background:linear-gradient(145deg,#F2E8C4,#FFF3DC);display:grid;place-items:center;font-size:5rem;margin-bottom:38px;border:1px solid var(--border)}
 .prose{font-size:1.02rem;line-height:1.85;color:#2F3340}
-.prose h2{font-size:1.8rem;margin:44px 0 18px;color:var(--ink)}
-.prose h3{font-size:1.32rem;margin:30px 0 14px}
+.prose h2{font-size:1.8rem;margin:44px 0 18px;color:var(--ink);scroll-margin-top:96px}
+.prose h3{font-size:1.32rem;margin:30px 0 14px;scroll-margin-top:96px}
 .prose p{margin-bottom:20px;color:#2F3340}
 .prose ul,.prose ol{margin:0 0 22px 4px;padding-left:20px}
 .prose li{margin-bottom:10px;color:#2F3340;list-style:disc}
