@@ -59,7 +59,8 @@ POSTS = [
         "seo_title": "A Full Guide to Start Learning Piano as a Beginner [15 Quick Tips]",
         "full_h1": "How to Start Learning Piano as a Beginner: 15 Quick Tips (Everything You Need to Know)",
         "body_file": "_piano_article_body.html",
-        "image": "/assets/img/how-to-start-learning-piano/average-piano-pricing.webp",
+        "image": "/assets/img/how-to-start-learning-piano/cover.jpg",
+        "cover_img": "/assets/img/how-to-start-learning-piano/cover.jpg",
         "keywords": "how to start learning piano, learn piano by yourself, piano for beginners, piano tips",
         "toc": [
             ("instrument", "1. Get the Right Instrument"),
@@ -251,8 +252,9 @@ VIDEOS = [
 
 # ---------------------------- shared partials ----------------------------
 
-def head(title, description, jsonld="", keywords="", canonical="/"):
+def head(title, description, jsonld="", keywords="", canonical="/", og_image=""):
     kw = ('<meta name="keywords" content="%s">' % keywords) if keywords else ""
+    ogimg = ('<meta property="og:image" content="https://%s%s">' % (SITE, og_image)) if og_image else ""
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -265,7 +267,7 @@ def head(title, description, jsonld="", keywords="", canonical="/"):
 <meta property="og:description" content="{description}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bigloong">
-<link rel="canonical" href="https://{SITE}{canonical}">
+{ogimg}<link rel="canonical" href="https://{SITE}{canonical}">
 <link rel="icon" type="image/png" href="/assets/img/favicon.png">
 <link rel="shortcut icon" href="/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -352,9 +354,9 @@ def footer():
 </body>
 </html>'''
 
-def page(title, description, body, active="", crumbs=None, jsonld="", keywords="", canonical="/"):
+def page(title, description, body, active="", crumbs=None, jsonld="", keywords="", canonical="/", og_image=""):
     crumb_html = breadcrumb(crumbs) if crumbs else ""
-    return (head(title, description, jsonld, keywords, canonical)
+    return (head(title, description, jsonld, keywords, canonical, og_image)
             + header(active) + crumb_html + body + footer())
 
 def ld_breadcrumb(crumbs):
@@ -528,9 +530,16 @@ def build_article(p):
     crumbs = [("Home", "/"), ("Blog", "/blog/"), (p["title"], None)]
     crumb_ld = ld_breadcrumb(crumbs)
     ld += crumb_ld
+    cover = p.get("cover_img")
+    if cover:
+        cover_block = (f'<a class="article-cover article-cover-img" href="{cover}" target="_blank" rel="noopener">'
+                       f'<img src="{cover}" alt="{p["title"]}" loading="eager"></a>')
+    else:
+        cover_block = (f'<div class="article-cover" style="background:linear-gradient(145deg,{p["c1"]},{p["c2"]})">'
+                       f'{p["emoji"]}</div>')
     body = f'''<main>
 <section class="section"><div class="wrap">
-<div class="article">
+<div class="article article-lr">
   <div class="article-main">
     <span class="eyebrow">{p['cat']}</span>
     <h1>{p['full_h1']}</h1>
@@ -540,13 +549,15 @@ def build_article(p):
       <span>&middot;</span>
       <span>{p['read']}</span>
     </div>
-    <div class="article-cover" style="background:linear-gradient(145deg,{p['c1']},{p['c2']})">{p['emoji']}</div>
     <div class="prose">{body_html}</div>
   </div>
-  <aside class="toc"><div class="toc-box">
-    <h4>On this page</h4>
-    {toc_html}
-  </div></aside>
+  <aside class="article-side">
+    {cover_block}
+    <div class="toc"><div class="toc-box">
+      <h4>On this page</h4>
+      {toc_html}
+    </div></div>
+  </aside>
 </div>
 </div></section>
 <div class="section"><div class="cta-band">
@@ -558,7 +569,8 @@ def build_article(p):
     canonical = "/blog/" + slug + "/"
     write("blog/%s/index.html" % slug,
           page(p["seo_title"], p["desc"], body, active="blog",
-               crumbs=crumbs, jsonld=ld, keywords=p["keywords"], canonical=canonical))
+               crumbs=crumbs, jsonld=ld, keywords=p["keywords"], canonical=canonical,
+               og_image=p.get("cover_img", "") or p.get("image", "")))
 
 def build_faq_index():
     items = "".join(f'''<div class="faq-item">

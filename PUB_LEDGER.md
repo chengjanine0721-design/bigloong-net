@@ -10,6 +10,8 @@
 
 **发布状态：✅ 已全部上线。** push `5c4054b..5f98462`，Cloudflare 部署完成，3 个 URL 线上核验 200，F5/F6/F72 已回填 11.19（revision 389/390）。
 
+**A 列 URL 回填（2026-11-19 补记）**：按用户确认的口径，把 MGo4JP 的 A 列从相对路径替换为完整可访问 URL。A5/A6/A72 已写入 `https://bigloong.net/...` 并读回核对无误（video 篇用真实的 `/video-tutorial/` 路径，未照抄表内误写的 `/blog/`）。飞书通知：发布后用 bot 身份把 URL 清单推给用户 open_id `ou_f03eaff539ac11b035b93197e723ef45`。这两步已固化进每日 9:00 定时任务。
+
 ### 说明
 - URL 规范：video 篇按文档第 2 节归入 `/video-tutorial/{slug}/`（流量表 A 列误写为 `/blog/`，以规范为准）；两篇 blog 按表内 slug 原样发布。
 - 结构化数据：两篇 blog = Article + FAQPage + BreadcrumbList；video 篇 = VideoObject + BreadcrumbList。canonical / meta / keywords 齐全，作者头像统一。
