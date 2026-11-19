@@ -101,7 +101,10 @@ p{color:var(--muted)}
   padding:10px 15px;border-radius:10px;font-size:.92rem;font-weight:500;
   color:var(--ink);transition:.2s;
 }
-.nav-link:hover,.nav-link.active{color:var(--primary);background:rgba(82,84,142,.07)}
+/* hover only tints the text, no filled chip, so non active items stay clean */
+.nav-link:hover{color:var(--primary);background:transparent}
+/* only the current section keeps the filled chip */
+.nav-link.active{color:var(--primary);background:rgba(82,84,142,.07);font-weight:600}
 .nav-link .caret{width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);margin-top:-3px;transition:.2s}
 .has-drop:hover .caret{transform:rotate(225deg);margin-top:2px}
 
