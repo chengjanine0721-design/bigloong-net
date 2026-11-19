@@ -189,6 +189,8 @@ def head(title, description, jsonld="", keywords="", canonical="/"):
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bigloong">
 <link rel="canonical" href="https://{SITE}{canonical}">
+<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+<link rel="shortcut icon" href="/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -216,7 +218,7 @@ def header(active=""):
         return "nav-link active" if active == name else "nav-link"
     return f'''<header class="site-header"><div class="wrap">
 <nav class="nav">
-  <a href="/" class="brand"><span class="brand-mark">B</span>bigloong<span class="dot">.</span></a>
+  <a href="/" class="brand"><img class="brand-mark" src="/assets/img/favicon.png" alt="Bigloong">bigloong<span class="dot">.</span></a>
   <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
   <ul class="nav-links">
     <li><a href="/" class="{cls('home')}">Home</a></li>
@@ -240,7 +242,7 @@ def footer():
     return f'''<footer class="site-footer"><div class="wrap">
 <div class="footer-grid">
   <div class="footer-brand">
-    <a href="/" class="brand"><span class="brand-mark">B</span>bigloong<span class="dot">.</span></a>
+    <a href="/" class="brand"><img class="brand-mark" src="/assets/img/favicon.png" alt="Bigloong">bigloong<span class="dot">.</span></a>
     <p>Practical piano guides, clear tutorials and honest buying advice. Made for players who want to spend less time guessing and more time playing.</p>
   </div>
   <div class="footer-col">
