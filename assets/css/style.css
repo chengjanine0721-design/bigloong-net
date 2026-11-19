@@ -94,7 +94,6 @@ p{color:var(--muted)}
   box-shadow:0 6px 16px rgba(82,84,142,.18);border:1px solid rgba(82,84,142,.12);
 }
 .footer-brand .brand-mark{box-shadow:none;border-color:rgba(255,255,255,.18)}
-.brand .dot{color:var(--primary)}
 .nav-links{display:flex;align-items:center;gap:4px}
 .nav-links>li{position:relative}
 .nav-link{
