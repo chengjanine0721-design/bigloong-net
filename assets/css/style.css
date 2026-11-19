@@ -215,8 +215,10 @@ p{color:var(--muted)}
 /* ---------- Article cards ---------- */
 .post-card{
   background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;
-  box-shadow:var(--shadow);transition:.3s;display:flex;flex-direction:column;
+  box-shadow:var(--shadow);transition:.3s;display:flex;flex-direction:column;position:relative;
 }
+/* 整张卡片可点击: 标题链接的伪元素铺满卡片 (stretched link) */
+.post-card h3 a::after{content:"";position:absolute;inset:0;z-index:1}
 .post-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-hover)}
 .post-thumb{
   height:190px;position:relative;
