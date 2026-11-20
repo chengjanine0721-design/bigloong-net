@@ -18,6 +18,39 @@ EMAIL = "contact@bigloong.net"
 
 POSTS = [
     {
+        "slug": "how-to-play-chords-on-piano",
+        "cat": "Beginner Guide",
+        "title": "How to Play Chords on Piano",
+        "desc": "Build fuller chords and smoother changes from day one. Learn major and minor triads, fingering, a simple piano chords chart and easy progressions.",
+        "emoji": "\U0001F3B9",
+        "c1": "#FFF0C9", "c2": "#E7E5F6",
+        "date": "2026-11-20",
+        "read": "11 min read",
+        "seo_title": "How to Play Chords on Piano: Beginner Chord Guide & Chart",
+        "full_h1": "How to Play Chords on Piano (Beginner Chord Guide & Chart)",
+        "body_file": "_chords_body.html",
+        "image": "/assets/img/how-to-play-chords-on-piano/cover.jpg",
+        "cover_img": "/assets/img/how-to-play-chords-on-piano/cover.jpg",
+        "keywords": "how to play chords on piano, how to play piano chords, playing chords on piano, how to play a chord on piano, piano music chords for beginners, piano chords chart, piano chord, piano chord structure, understanding piano chords, chords on piano, chords piano tutorial, study piano chords",
+        "toc": [
+            ("what-is-a-chord", "What Is a Piano Chord?"),
+            ("triads", "Major and Minor Triads"),
+            ("chord-chart", "A Simple Chords Chart"),
+            ("fingerings", "Smooth Fingerings"),
+            ("chord-structure", "Chord Structure"),
+            ("progressions", "Simple Progressions"),
+            ("chord-changes", "Smooth Chord Changes"),
+            ("tutorial", "Step by Step Tutorial"),
+            ("faq", "FAQ"),
+            ("conclusion", "Start Today"),
+        ],
+        "faqs": [
+            ("What is the easiest chord to start with on piano", "C major is the best first chord. It uses only white keys and fits comfortably under fingers 1 3 5, so you can focus on tone and relaxation rather than awkward positions. From there, A minor and G major are natural next steps."),
+            ("How long does it take to play chords smoothly", "Most players can hold a few basic chords within a first week and move between them smoothly after two to four weeks of short daily practice. Consistency matters more than session length."),
+            ("Do I need to read music to play chords", "No. Chord charts name the notes or shapes directly, so you can start playing immediately. Reading music is still worth adding later because it opens up far more songs."),
+        ],
+    },
+    {
         "slug": "how-much-does-a-piano-cost",
         "cat": "Buying Guide",
         "title": "How Much Does a Piano Cost in 2026",
@@ -172,6 +205,34 @@ FAQS = [
         "slug": "what-is-the-80-20-rule-for-piano",
         "q": "What is the 80/20 rule for piano",
         "a": "The 80/20 rule means roughly 80 percent of your progress comes from 20 percent of your practice. Rather than playing a piece from the top again and again, isolate the few hard passages and repeat them slowly and correctly until they become easy.",
+    },
+]
+
+# Rich FAQ articles (Q&A structure + Article/FAQPage/BreadcrumbList schema)
+FAQ_ARTICLES = [
+    {
+        "slug": "how-many-keys-on-a-piano",
+        "title": "How Many Keys Are on a Piano?",
+        "desc": "A full piano has 88 keys: 52 white and 36 black. Learn how many keys, notes and octaves a piano has, why 88 became standard and whether you need all of them.",
+        "full_h1": "How Many Keys Are on a Piano? (Notes, Octaves & 88-Key Guide)",
+        "seo_title": "How Many Keys Are on a Piano? 88 Keys, Notes & Octaves Explained",
+        "body_file": "_many_keys_body.html",
+        "keywords": "how many keys on a piano, how many notes on a piano, how many octaves are in a piano, 88 piano keys, how many notes on piano, numbers of piano keys",
+        "date": "2026-11-20",
+        "read": "8 min read",
+        "toc": [
+            ("keys-and-notes", "Keys and Notes"),
+            ("octaves", "How Many Octaves"),
+            ("why-88", "Why 88 Became Standard"),
+            ("do-you-need-88", "Do You Need 88 Keys?"),
+            ("faq", "FAQ"),
+            ("conclusion", "Bottom Line"),
+        ],
+        "faqs": [
+            ("How many keys on a piano are white and how many are black", "A standard piano has 52 white keys and 36 black keys, making 88 in total. The black keys sit in repeating groups of two and three, which is what lets you find any note by touch and sight."),
+            ("How many notes on a piano can you play at once", "Technically you can press several keys together, and a full chord uses three or more. In practice, hands can comfortably hold around ten notes at once, though most music uses far fewer."),
+            ("Is 61 keys enough to learn piano", "Yes, for the first year or two. A 61-key keyboard covers five octaves and handles beginner pieces, chords and most popular songs. Move to 88 keys when your repertoire needs the extreme low or high notes."),
+        ],
     },
 ]
 
@@ -584,6 +645,13 @@ def build_faq_index():
     <a class="read-link" href="/faq/{f['slug']}/">Read answer <span class="arrow">&rarr;</span></a>
   </div>
 </article>''' for f in FAQS)
+    cards += "".join(f'''<article class="post-card faq-card">
+  <div class="post-body">
+    <h3><a href="/faq/{f['slug']}/">{f['title']}</a></h3>
+    <p>{f['desc'][:150]}...</p>
+    <a class="read-link" href="/faq/{f['slug']}/">Read guide <span class="arrow">&rarr;</span></a>
+  </div>
+</article>''' for f in FAQ_ARTICLES)
     ld_obj = {"@context": "https://schema.org", "@type": "FAQPage",
               "mainEntity": [{"@type": "Question", "name": f["q"],
                               "acceptedAnswer": {"@type": "Answer", "text": f["a"]}} for f in FAQS]}
@@ -643,6 +711,62 @@ def build_faq_detail(f):
     write("faq/%s/index.html" % slug,
           page(f["q"] + " | Bigloong FAQ", f["a"][:160], body, active="faq",
                crumbs=crumbs, jsonld=ld, canonical=canonical))
+
+def build_faq_article(f):
+    """Long-form FAQ article with Article + FAQPage + BreadcrumbList schema."""
+    slug = f["slug"]
+    with open(os.path.join(ROOT, f["body_file"]), encoding="utf-8") as fh:
+        body_html = fh.read()
+    toc_html = "".join(f'<a href="#{i}">{t}</a>' for i, t in f["toc"])
+    article_ld = {
+        "@context": "https://schema.org", "@type": "Article",
+        "headline": f["full_h1"], "description": f["desc"],
+        "author": {"@type": "Person", "name": AUTHOR, "image": "https://" + SITE + "/assets/img/author-avatar.png"},
+        "publisher": {"@type": "Organization", "name": "Bigloong"},
+        "datePublished": f["date"], "dateModified": f["date"],
+        "mainEntityOfPage": "https://" + SITE + "/faq/" + slug + "/"
+    }
+    faq_ld = {"@context": "https://schema.org", "@type": "FAQPage",
+              "mainEntity": [{"@type": "Question", "name": q,
+                              "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in f["faqs"]]}
+    crumbs = [("Home", "/"), ("FAQ", "/faq/"), (f["title"], None)]
+    ld = ('<script type="application/ld+json">' + json.dumps(article_ld, ensure_ascii=False) + '</script>'
+          + '<script type="application/ld+json">' + json.dumps(faq_ld, ensure_ascii=False) + '</script>'
+          + ld_breadcrumb(crumbs))
+    cover_block = (f'<div class="article-cover" style="background:linear-gradient(145deg,#FFF0C9,#E7E5F6)">&#127929;</div>')
+    body = f'''<main>
+<section class="section"><div class="wrap">
+<div class="article article-lr">
+  <div class="article-main">
+    <span class="eyebrow">FAQ Guide</span>
+    <h1>{f['full_h1']}</h1>
+    <div class="article-meta">
+      <img class="author" src="/assets/img/author-avatar.png" alt="Alice Baker">
+      <span>By {AUTHOR}</span>
+      <span>&middot;</span>
+      <span>{f['read']}</span>
+    </div>
+    <div class="prose">{body_html}</div>
+  </div>
+  <aside class="article-side">
+    {cover_block}
+    <div class="toc"><div class="toc-box">
+      <h4>On this page</h4>
+      {toc_html}
+    </div></div>
+  </aside>
+</div>
+</div></section>
+<div class="section"><div class="cta-band">
+  <h2>Have another question</h2>
+  <p>Send it our way and we will add an answer.</p>
+  <div class="actions"><a href="/contact-us/" class="btn btn-primary">Contact us</a></div>
+</div></div>
+</main>'''
+    canonical = "/faq/" + slug + "/"
+    write("faq/%s/index.html" % slug,
+          page(f["seo_title"], f["desc"], body, active="faq",
+               crumbs=crumbs, jsonld=ld, keywords=f["keywords"], canonical=canonical))
 
 def build_video_index():
     cards = ""
@@ -824,6 +948,7 @@ def build_sitemap():
     urls = ["/", "/blog/", "/faq/", "/video-tutorial/", "/about-us/", "/privacy/", "/contact-us/", "/terms/"]
     urls += ["/blog/%s/" % p["slug"] for p in POSTS]
     urls += ["/faq/%s/" % f["slug"] for f in FAQS]
+    urls += ["/faq/%s/" % f["slug"] for f in FAQ_ARTICLES]
     urls += ["/video-tutorial/%s/" % v["slug"] for v in VIDEOS]
     entries = "".join(f"  <url><loc>https://{SITE}{u}</loc></url>\n" for u in urls)
     xml = f'''<?xml version="1.0" encoding="UTF-8"?>
@@ -855,6 +980,8 @@ def main():
     build_faq_index()
     for f in FAQS:
         build_faq_detail(f)
+    for f in FAQ_ARTICLES:
+        build_faq_article(f)
     build_video_index()
     for v in VIDEOS:
         build_video_detail(v)
