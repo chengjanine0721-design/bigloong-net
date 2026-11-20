@@ -364,7 +364,6 @@ def header(active=""):
   <a href="https://bigloong.net" class="brand"><img class="brand-mark" src="/assets/img/favicon.png" alt="Bigloong">bigloong</a>
   <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
   <ul class="nav-links">
-    <li><a href="/" class="{cls('home')}">Home</a></li>
     <li><a href="/blog/" class="{cls('blog')}">Blog</a></li>
     <li><a href="/faq/" class="{cls('faq')}">FAQ</a></li>
     <li><a href="/video-tutorial/" class="{cls('video')}">Video Tutorial</a></li>
@@ -495,7 +494,7 @@ def build_home():
   <div class="staff-lines"></div>
   <div class="wrap">
     <span class="hero-badge"><span class="pulse"></span> Piano guides for real players</span>
-    <h1>Learn piano with <span class="grad-text">confidence</span></h1>
+    <h1>Learn piano with<br><span class="hero-word" aria-label="Bigloong">Bigloong<span class="hero-caret" aria-hidden="true"></span></span></h1>
     <p class="lede">Clear piano guides, honest buying advice and short video tutorials. From your first note to your first song, we help you enjoy the journey.</p>
     <div class="hero-actions">
       <a href="/blog/" class="btn btn-primary">Browse piano guides <span>&rarr;</span></a>

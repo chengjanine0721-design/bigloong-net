@@ -1,5 +1,9 @@
 # bigloong.net 发布台账
 
+## 2026-11-20 补充 4：导航栏删 Home + hero 动态紫色 Bigloong
+
+用户要求：①删除顶部导航栏 Home（logo 已可回首页，gologin 也是无 Home 项）；②首页标题第二行加紫色动态 "Bigloong"，参考 gologin（渐变词+闪烁光标）。实现：`header()` 删 Home li（全站生效）；`build_home()` 的 h1 改为两行，第二行 `<span class="hero-word">Bigloong<span class="hero-caret"></span></span>`；CSS 新增 `.hero-word`(紫色渐变 + `heroGradient` 4.5s 流动) 与 `.hero-caret`(`heroBlink` 1s 闪烁光标)，并支持 `prefers-reduced-motion`。本地 headless Chrome 截图验证：导航无 Home、Bigloong 紫色渐变+光标正常。仅改导航与 hero 呈现，正文/URL/表格不动。
+
 ## 2026-11-20 补充 3：finger-speed 首图换风格（明亮插画）
 
 用户要求 `how-to-improve-piano-finger-speed-and-dexterity` 首图换不同风格但仍符合主题。生成明亮蓝紫扁平插画底图（双手弹琴键+动态速度线，紧扣"手指速度/灵活性"），替换原暗调杂志摄影。因浅底不能用白字，给 `tools/make_cover.py` 新增 `--light` 模式（浅色遮罩+深墨蓝字+深金点缀），已在 BLOG_COVER_SPEC.md 第十节固化。封面 1200x800/178.8KB/q90 4:4:4/PASS，`--inpaint 1080,735,1200,800` 擦右下水印。直接覆盖 cover.jpg，build.py 路径不变，重建后部署。仅换首图，正文/URL/表格不动。
