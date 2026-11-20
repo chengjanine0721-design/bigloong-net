@@ -1,5 +1,20 @@
 # bigloong.net 发布台账
 
+## 2026-11-20 补充 13：twinkle-twinkle 视频页重构（介绍+视频+琴谱+锚链接）
+
+- 页面 `/video-tutorial/how-to-play-twinkle-twinkle-little-star-on-the-piano/`，用户要求：开头约100词介绍（级别/适合beginners/多久学会）→ 嵌入视频 → 提供琴谱图 → "twinkle twinkle little star piano sheet" 作锚文本链接到 makingmusicfun.net PDF；保留 What you will learn。
+- VIDEOS 条目新增 `intro`（95词文案：easy beginner-level、suits complete beginners and young children、右手一下午/双手一周）、`embeds`（`GgHkBKH1m1Q` Easy Piano Tutorial / Bitesize Piano，16/9 横屏 embed-wide）、`sheet`（img+note+anchor+url）。
+- `build_video_detail()` 增富布局分支：`if v.get("intro")` → intro prose → media → `.sheet-music`(h2+img.sheet-preview+`.sheet-note`含`<a target=_blank rel=noopener>`) → steps prose。其他页不受影响（finding-middle-c 仍 copy_first、piano-posture 仍视频在前）。
+- 琴谱图 `assets/img/videos/twinkle-sheet.png`（用户提供截图，makingmusicfun.net 谱面）。CSS 新增 `.sheet-music/.sheet-preview/.sheet-note` 居中卡片，紫色下划线锚文本。CSS_VER eded93c0。
+- PDF 链接：`https://www.makingmusicfun.net/public/assets/pdf/sheet_music/twinkle-twinkle-little-star-piano-solo.pdf`。
+
+## 2026-11-20 补充 12：finding-middle-c 页文案移到视频上方
+
+- 用户要求：视频放下面，文案放最前面（给出 lead + What you will learn 四条文案，与现有 desc/steps 一致，无需改文案本身）。
+- 实现：VIDEOS 条目加开关 `copy_first: True`（仅 finding-middle-c）；`build_video_detail()` 把 media/prose 抽成变量，`content = prose + media if copy_first else media + prose`，其余视频页默认仍是视频在前、文案在后，不受影响。拼接保留 `\n    ` 让未受影响页的 HTML diff 为零。
+- 现在正文顺序：eyebrow → h1 → meta → `.prose`(article-lead + What you will learn + ol + tip) → `.video-embeds`。文案在前，3 个视频（2 shorts cols-2 + 1 横屏 embed-wide）在下方。
+- 验证：线上 200，`article-lead`@52 / `What you will learn`@53 在 `video-embeds`@57 之前；piano-posture 保持视频在前。commit `2a056d5`（快进 148ea80→2a056d5）。
+
 ## 2026-11-20 补充 11：finding-middle-c 页嵌入 3 视频 + 文案
 
 - 页面 `/video-tutorial/finding-middle-c-on-piano/`，占位块换成 3 个嵌入视频并配文案描述。

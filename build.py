@@ -339,6 +339,17 @@ VIDEOS = [
             "Add a simple left hand by playing a low C on the first beat of each bar, then try alternating low C and G for a fuller sound.",
             "Put both hands together slowly with a metronome, and only increase the tempo once the notes are even and relaxed.",
         ],
+        "intro": "Twinkle Twinkle Little Star is one of the first songs nearly every piano learner meets. It is an easy, beginner-level piece: the melody uses only a few notes, stays in a comfortable range, and repeats a simple pattern, so it suits complete beginners and young children well. Most learners can play the right-hand tune in a single afternoon and put both hands together within a week of short, regular practice. Its slow, familiar tune makes it ideal for building note reading, steady rhythm and confidence at the keyboard before moving on to more demanding pieces.",
+        "embeds": [
+            {"id": "GgHkBKH1m1Q", "label": "Easy Piano Tutorial",
+             "desc": "A slow, note-by-note walkthrough you can play along with.", "ratio": "16/9"},
+        ],
+        "sheet": {
+            "img": "/assets/img/videos/twinkle-sheet.png",
+            "note": "Want the full printable score? Download the complete ",
+            "anchor": "twinkle twinkle little star piano sheet",
+            "url": "https://www.makingmusicfun.net/public/assets/pdf/sheet_music/twinkle-twinkle-little-star-piano-solo.pdf",
+        },
     },
 ]
 
@@ -920,7 +931,23 @@ def build_video_detail(v):
       <ol>{steps}</ol>
       <div class="note"><strong>Tip</strong> Practise one step at a time and only move on when the current one feels easy.</div>
     </div>'''
-    content = (prose + "\n    " + media) if v.get("copy_first") else (media + "\n    " + prose)
+    if v.get("intro"):
+        # Rich layout: intro copy -> video -> sheet music (image + anchored download) -> steps
+        sh = v["sheet"]
+        intro_block = f'<div class="prose"><p class="article-lead">{v["intro"]}</p></div>'
+        sheet_block = f'''<div class="sheet-music">
+      <h2 id="sheet-music">Piano sheet music</h2>
+      <img class="sheet-preview" src="{sh['img']}" alt="Twinkle Twinkle Little Star piano sheet music preview" loading="lazy">
+      <p class="sheet-note">{sh['note']}<a href="{sh['url']}" target="_blank" rel="noopener">{sh['anchor']}</a>.</p>
+    </div>'''
+        steps_block = f'''<div class="prose">
+      <h2 id="steps">What you will learn</h2>
+      <ol>{steps}</ol>
+      <div class="note"><strong>Tip</strong> Practise one step at a time and only move on when the current one feels easy.</div>
+    </div>'''
+        content = intro_block + "\n    " + media + "\n    " + sheet_block + "\n    " + steps_block
+    else:
+        content = (prose + "\n    " + media) if v.get("copy_first") else (media + "\n    " + prose)
     body = f'''<main>
 <section class="section"><div class="wrap">
 <div class="article single-col">
