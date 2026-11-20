@@ -1,5 +1,12 @@
 # bigloong.net 发布台账
 
+## 2026-11-20 补充 16：其余4个视频页封面也换真实图
+
+- 用户给出4条对应关系，把剩余4个视频卡片的 emoji 缩略图换成真实封面。
+- posture-cover.jpg ← piano-cover_PianoPostureForBeginners_1200x800.png（Piano Posture for Beginners）；middle-c-cover.jpg ← piano-cover_FindingMiddleCOnAPiano_1200x800.png（Finding Middle C on a Piano）；first-song-cover.jpg ← piano-cover_YourFirstPianoSongTutorial_1200x800.png（Your First Piano Song Tutorial）；scales-cover.jpg ← piano-cover_PianoScalesForBeginners_1200x800.png（Piano Scales for Beginners）。
+- 均 1200×800 JPEG q90 4:4:4 progressive，81-84KB(<200KB)。VIDEOS 对应4条目加 cover_img；复用 video_thumb() 自动生效（列表页+推荐卡）。列表页5卡全用真实封面、thumb-emoji 归零。未改 CSS。
+- ⚠️用户共贴7张图，仅4条对应关系明确。未使用：piano-cover_FindTheMeddleC_1200x800.png（图字"Find the Meddle C"，无对应页面）、piano-cover_TwinkleTwinkleLittleStar.png(3840×2160)与 _1200x800（twinkle 上一轮已用 _1200x800 换过）。待用户确认是否另用。
+
 ## 2026-11-20 补充 15：twinkle 视频卡片封面换真实图
 
 - 用户要求：`/video-tutorial/` 列表页里 "How to Play Twinkle Twinkle Little Star" 那张卡片的缩略图（原 emoji+渐变块）换成真实封面图。
