@@ -286,6 +286,7 @@ VIDEOS = [
             "On a full 88 key piano, middle C is also the fourth C counted up from the lowest note.",
             "Mark it once with a removable sticker if you are new, then remove it as your reading improves.",
         ],
+        "copy_first": True,
         "embeds": [
             {"id": "tbslYrPGzQA", "label": "Find Middle C Fast",
              "desc": "Spot middle C the moment you sit down — no counting, no guessing.", "ratio": "9/16"},
@@ -913,6 +914,13 @@ def build_video_detail(v):
         media = (f'<div class="video-placeholder" style="background:linear-gradient(145deg,{v["c1"]},{v["c2"]})">'
                  f'<span class="vp-play">&#9654;</span>'
                  f'<span class="vp-label">Video tutorial coming soon</span></div>')
+    prose = f'''<div class="prose">
+      <p class="article-lead">{v['desc']}</p>
+      <h2 id="steps">What you will learn</h2>
+      <ol>{steps}</ol>
+      <div class="note"><strong>Tip</strong> Practise one step at a time and only move on when the current one feels easy.</div>
+    </div>'''
+    content = (prose + "\n    " + media) if v.get("copy_first") else (media + "\n    " + prose)
     body = f'''<main>
 <section class="section"><div class="wrap">
 <div class="article single-col">
@@ -920,13 +928,7 @@ def build_video_detail(v):
     <span class="eyebrow">Video Tutorial &middot; {v['duration']}</span>
     <h1>{v['title']}</h1>
     <div class="article-meta"><img class="author" src="/assets/img/author-avatar.png" alt="Alice Baker"><span>By {AUTHOR}</span></div>
-    {media}
-    <div class="prose">
-      <p class="article-lead">{v['desc']}</p>
-      <h2 id="steps">What you will learn</h2>
-      <ol>{steps}</ol>
-      <div class="note"><strong>Tip</strong> Practise one step at a time and only move on when the current one feels easy.</div>
-    </div>
+    {content}
   </div>
 </div>
 </div></section>
