@@ -3,3 +3,5 @@
 # 封面图生成中间产物(原图/底图), 交付物是 cover.jpg
 assets/img/*/base.jpg
 assets/img/*/Editorial_magazine_photography_*.png
+assets/img/*/Modern_flat_vector_editorial_*.png
+assets/img/*/*-backup.jpg

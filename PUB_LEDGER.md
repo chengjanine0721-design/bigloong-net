@@ -1,5 +1,9 @@
 # bigloong.net 发布台账
 
+## 2026-11-20 补充 7：修复 hero "Bigloong" 字底被水平切平
+
+用户反馈首页 Bigloong 字母下半截被一条水平线切掉。根因：`background-clip:text` 渐变字 + `line-height:1.1` 行盒太矮，Poppins 的 g 等下伸部超出行盒、背景没覆盖到那段→透明→视觉像被切平。修复：`.hero-word` 改 `line-height:1.32` + `padding:.10em .02em .20em` + 等量负 margin 抵消位移，`background-size:220% 150%`、`background-position` 动画带 50% 垂直中心。本地 headless 截图(1080宽,与用户截图同视口)确认 g 下伸部完整、光标竖线紧贴词尾且对齐。CSS_VER=58f779d4。导航/正文/URL/表格不动。
+
 ## 2026-11-20 补充 6：首页 "Built for piano learners" 屏下新增 3 视频推荐区
 
 用户要求把该屏下方区域改成 3 个视频卡片，侧重"收集各种钢琴学习视频"，给了 3 个 YouTube 链接。实现：下载 3 个视频 maxresdefault 封面到本地 `assets/img/videos/{id}.webp`（1280×720→webp q82，41-60KB，不依赖 YouTube CDN），build_home() 新增 videos 列表（视频 ID/标题/频道/分类标签/完整 YouTube URL），在 split 后加 `.video-strip`（eyebrow "Watch & learn" + 标题 + 说明 + `grid grid-3`）。CSS 新增 `.video-card/.video-thumb/.video-play/.video-tag/.video-info` 系列：16:9 封面、居中播放按钮、悬浮放大+变暗、分类标签、整卡 target=_blank 跳转 YouTube。三个视频：①Raindrops 舒缓教程(Soothing Tutorials) ②Piano for Beginners Lesson 1(Bill Hilton) ③Full 10-Hour Piano Course(Zak Serroukh)。本地 headless 截图确认渲染正常。正文/其他 section/URL 不动。
