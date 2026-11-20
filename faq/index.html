@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/style.css?v=58f779d4">
+<link rel="stylesheet" href="/assets/css/style.css?v=615ca7c7">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How often should I tune a piano", "acceptedAnswer": {"@type": "Answer", "text": "A new piano should be tuned two to four times in its first year as the strings settle. After that, twice a year is a good rhythm for most homes. Pianos in dry or humid climates, or those used for teaching, may need more frequent tuning."}}, {"@type": "Question", "name": "Digital or acoustic piano for beginners", "acceptedAnswer": {"@type": "Answer", "text": "A weighted digital piano is the best start for most beginners. It costs less, needs no tuning, fits small spaces and lets you practise with headphones. Choose an acoustic upright when you want a traditional touch and have a dedicated room and a long term budget."}}, {"@type": "Question", "name": "How long does it take to learn piano", "acceptedAnswer": {"@type": "Answer", "text": "With short daily practice, most players can play a simple two hand song within four to eight weeks. Reaching a confident intermediate level usually takes one to three years. Consistency matters far more than long occasional sessions."}}, {"@type": "Question", "name": "Best age to start piano lessons", "acceptedAnswer": {"@type": "Answer", "text": "Many children start formal lessons between four and six, once they can focus for a short session and recognise left from right. Adults can start at any age and often progress quickly because they understand practice and choose their own repertoire."}}, {"@type": "Question", "name": "Do I need a piano teacher", "acceptedAnswer": {"@type": "Answer", "text": "A teacher gives the fastest reliable progress and catches technique problems early. If that is not in the budget, structured method books plus video lessons work well. Either way, regular feedback on what you play is the key ingredient."}}, {"@type": "Question", "name": "What is the 80/20 rule for piano", "acceptedAnswer": {"@type": "Answer", "text": "The 80/20 rule means roughly 80 percent of your progress comes from 20 percent of your practice. Rather than playing a piece from the top again and again, isolate the few hard passages and repeat them slowly and correctly until they become easy."}}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://bigloong.net/"}, {"@type": "ListItem", "position": 2, "name": "FAQ", "item": "https://bigloong.net/"}]}</script>
 </head>
 <body>
@@ -46,9 +46,13 @@
   <span class="eyebrow">Help centre</span>
   <h1>Frequently asked questions</h1>
   <p>Quick answers about learning piano, buying an instrument and practising well.</p>
+  <div class="help-search">
+    <svg class="search-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="20" y1="20" x2="16.65" y2="16.65"></line></svg>
+    <input id="faqSearch" type="search" placeholder="Search for articles..." aria-label="Search frequently asked questions" autocomplete="off">
+  </div>
 </div></section>
 <section class="section"><div class="wrap">
-  <div class="grid grid-2"><article class="post-card faq-card">
+  <div class="grid grid-3 faq-grid"><article class="post-card faq-card">
   <div class="post-body">
     <h3><a href="/faq/how-often-should-i-tune-a-piano/">How often should I tune a piano</a></h3>
     <p>A new piano should be tuned two to four times in its first year as the strings settle. After that, twice a year is a good rhythm for most homes. Piano...</p>
@@ -91,6 +95,7 @@
     <a class="read-link" href="/faq/how-many-keys-on-a-piano/">Read guide <span class="arrow">&rarr;</span></a>
   </div>
 </article></div>
+  <p id="faqNoResults" class="faq-empty" hidden>No answers found. Try a different phrase, or <a href="/contact-us/">contact us</a>.</p>
 </div></section>
 <section class="section section-soft"><div class="wrap">
   <div class="section-head"><span class="eyebrow">In brief</span><h2>Common questions, answered</h2></div>
@@ -119,6 +124,23 @@
   <p>We are happy to help. Reach out and we will get back to you.</p>
   <div class="actions"><a href="/contact-us/" class="btn btn-primary">Contact us</a></div>
 </div></div>
+<script>
+(function(){
+  var input = document.getElementById('faqSearch');
+  if (!input) return;
+  var cards = [].slice.call(document.querySelectorAll('.faq-grid .faq-card'));
+  var empty = document.getElementById('faqNoResults');
+  input.addEventListener('input', function(){
+    var q = this.value.trim().toLowerCase(), shown = 0;
+    cards.forEach(function(c){
+      var hit = !q || c.textContent.toLowerCase().indexOf(q) !== -1;
+      c.hidden = !hit;
+      if (hit) shown++;
+    });
+    empty.hidden = !(q && shown === 0);
+  });
+})();
+</script>
 </main><footer class="site-footer"><div class="wrap">
 <div class="footer-grid">
   <div class="footer-brand">

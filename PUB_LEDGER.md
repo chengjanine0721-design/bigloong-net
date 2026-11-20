@@ -1,5 +1,9 @@
 # bigloong.net 发布台账
 
+## 2026-11-20 补充 8：删除 "Built for piano learners" 屏 + 视频标题单行
+
+用户要求：①删除 "Why Bigloong / Built for piano learners" 那一整屏；②视频区标题保持一行。实现：build_home() 删掉整个 `.split` 块（含文案、mock 视觉、Learn more about us 链接），视频区 `.video-strip` 保留为该 section 唯一内容；CSS `.video-strip` 去掉原 margin-top/padding-top/border-top（原为跟在 split 后的分隔），`.video-strip-head` max-width 680→960px、h3 加 `white-space:nowrap` + 字号上限 2.3→2.05rem 保证桌面单行，p 限宽 680 居中；媒体查询 ≤820px 恢复 h3 换行避免窄屏溢出。本地 1080 宽截图确认：该屏已删、标题单行完整、3 视频卡片正常。CSS_VER=615ca7c7。
+
 ## 2026-11-20 补充 7：修复 hero "Bigloong" 字底被水平切平
 
 用户反馈首页 Bigloong 字母下半截被一条水平线切掉。根因：`background-clip:text` 渐变字 + `line-height:1.1` 行盒太矮，Poppins 的 g 等下伸部超出行盒、背景没覆盖到那段→透明→视觉像被切平。修复：`.hero-word` 改 `line-height:1.32` + `padding:.10em .02em .20em` + 等量负 margin 抵消位移，`background-size:220% 150%`、`background-position` 动画带 50% 垂直中心。本地 headless 截图(1080宽,与用户截图同视口)确认 g 下伸部完整、光标竖线紧贴词尾且对齐。CSS_VER=58f779d4。导航/正文/URL/表格不动。

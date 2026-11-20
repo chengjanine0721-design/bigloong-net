@@ -558,26 +558,6 @@ def build_home():
 </div></section>
 
 <section class="section section-soft"><div class="wrap">
-  <div class="split">
-    <div class="split-copy">
-      <span class="eyebrow">Why Bigloong</span>
-      <h2>Built for piano learners</h2>
-      <p>We know how frustrating it is to hunt through ten tabs for one clear answer. Bigloong collects piano advice in one calm, readable place.</p>
-      <p>Every guide is written with care, checked against real playing experience and updated when needed. No clickbait, no clutter and no unexplained jargon.</p>
-      <a href="/about-us/" class="read-link">Learn more about us <span class="arrow">&rarr;</span></a>
-    </div>
-    <div class="split-visual">
-      <div class="visual-box"><div class="glow"></div>
-        <div class="mock">
-          <div class="mock-line purple w70"></div>
-          <div class="mock-line"></div>
-          <div class="mock-line w45"></div>
-          <div class="mock-line"></div>
-          <div class="mock-btn"></div>
-        </div>
-      </div>
-    </div>
-  </div>
   <div class="video-strip">
     <div class="video-strip-head">
       <span class="eyebrow">Watch &amp; learn</span>
@@ -722,9 +702,14 @@ def build_faq_index():
   <span class="eyebrow">Help centre</span>
   <h1>Frequently asked questions</h1>
   <p>Quick answers about learning piano, buying an instrument and practising well.</p>
+  <div class="help-search">
+    <svg class="search-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="20" y1="20" x2="16.65" y2="16.65"></line></svg>
+    <input id="faqSearch" type="search" placeholder="Search for articles..." aria-label="Search frequently asked questions" autocomplete="off">
+  </div>
 </div></section>
 <section class="section"><div class="wrap">
-  <div class="grid grid-2">{cards}</div>
+  <div class="grid grid-3 faq-grid">{cards}</div>
+  <p id="faqNoResults" class="faq-empty" hidden>No answers found. Try a different phrase, or <a href="/contact-us/">contact us</a>.</p>
 </div></section>
 <section class="section section-soft"><div class="wrap">
   <div class="section-head"><span class="eyebrow">In brief</span><h2>Common questions, answered</h2></div>
@@ -735,6 +720,23 @@ def build_faq_index():
   <p>We are happy to help. Reach out and we will get back to you.</p>
   <div class="actions"><a href="/contact-us/" class="btn btn-primary">Contact us</a></div>
 </div></div>
+<script>
+(function(){{
+  var input = document.getElementById('faqSearch');
+  if (!input) return;
+  var cards = [].slice.call(document.querySelectorAll('.faq-grid .faq-card'));
+  var empty = document.getElementById('faqNoResults');
+  input.addEventListener('input', function(){{
+    var q = this.value.trim().toLowerCase(), shown = 0;
+    cards.forEach(function(c){{
+      var hit = !q || c.textContent.toLowerCase().indexOf(q) !== -1;
+      c.hidden = !hit;
+      if (hit) shown++;
+    }});
+    empty.hidden = !(q && shown === 0);
+  }});
+}})();
+</script>
 </main>'''
     write("faq/index.html", page("FAQ | Bigloong", "Answers to common questions about learning piano, piano prices and practice.",
           body, active="faq", crumbs=crumbs, jsonld=ld, canonical="/faq/"))
