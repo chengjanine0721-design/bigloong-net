@@ -286,6 +286,14 @@ VIDEOS = [
             "On a full 88 key piano, middle C is also the fourth C counted up from the lowest note.",
             "Mark it once with a removable sticker if you are new, then remove it as your reading improves.",
         ],
+        "embeds": [
+            {"id": "tbslYrPGzQA", "label": "Find Middle C Fast",
+             "desc": "Spot middle C the moment you sit down — no counting, no guessing.", "ratio": "9/16"},
+            {"id": "W6LnO6m-mss", "label": "Middle C in Seconds",
+             "desc": "Another quick visual trick to locate middle C on any keyboard.", "ratio": "9/16"},
+            {"id": "ZCIEcgRnMZc", "label": "Keys & Every C Explained",
+             "desc": "A complete walkthrough of the keys: where middle C sits, how notes repeat, and how to find every C on a full-size, 36, 49 or 61-key keyboard.", "ratio": "16/9"},
+        ],
     },
     {
         "slug": "first-piano-song-tutorial",
@@ -881,14 +889,26 @@ def build_video_detail(v):
     crumbs = [("Home", "/"), ("Video Tutorial", "/video-tutorial/"), (v["title"], None)]
     ld = '<script type="application/ld+json">' + json.dumps(ld_obj, ensure_ascii=False) + '</script>' + ld_breadcrumb(crumbs)
     if v.get("embeds"):
-        items = "".join(
-            f'<div class="short-item"><div class="short-frame">'
-            f'<iframe src="https://www.youtube.com/embed/{e["id"]}" '
-            f'title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; '
-            f'clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" '
-            f'allowfullscreen loading="lazy"></iframe></div>'
-            f'<span class="short-label">{e["label"]}</span></div>' for e in v["embeds"])
-        media = f'<div class="video-embeds"><div class="shorts-row">{items}</div></div>'
+        def yt(e):
+            return (f'<iframe src="https://www.youtube.com/embed/{e["id"]}" '
+                    f'title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; '
+                    f'clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" '
+                    f'allowfullscreen loading="lazy"></iframe>')
+        shorts = [e for e in v["embeds"] if e.get("ratio", "9/16") == "9/16"]
+        wides = [e for e in v["embeds"] if e.get("ratio") == "16/9"]
+        parts = ""
+        if shorts:
+            cards = ""
+            for e in shorts:
+                desc = f'<p class="short-desc">{e["desc"]}</p>' if e.get("desc") else ""
+                cards += (f'<div class="short-item"><div class="short-frame">{yt(e)}</div>'
+                          f'<span class="short-label">{e["label"]}</span>{desc}</div>')
+            parts += f'<div class="shorts-row cols-{len(shorts)}">{cards}</div>'
+        for e in wides:
+            desc = f'<p>{e["desc"]}</p>' if e.get("desc") else ""
+            parts += (f'<div class="embed-wide"><div class="wide-frame">{yt(e)}</div>'
+                      f'<div class="wide-copy"><h3>{e["label"]}</h3>{desc}</div></div>')
+        media = f'<div class="video-embeds">{parts}</div>'
     else:
         media = (f'<div class="video-placeholder" style="background:linear-gradient(145deg,{v["c1"]},{v["c2"]})">'
                  f'<span class="vp-play">&#9654;</span>'

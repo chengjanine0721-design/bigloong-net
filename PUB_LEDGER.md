@@ -1,5 +1,12 @@
 # bigloong.net 发布台账
 
+## 2026-11-20 补充 11：finding-middle-c 页嵌入 3 视频 + 文案
+
+- 页面 `/video-tutorial/finding-middle-c-on-piano/`，占位块换成 3 个嵌入视频并配文案描述。
+- 2 个 shorts 并排一行（cols-2）：`tbslYrPGzQA`(FIND Middle C FAST!/Master of Piano) label "Find Middle C Fast"、文案"Spot middle C the moment you sit down"；`W6LnO6m-mss`(Finding Middle C/Rachel Breeze) label "Middle C in Seconds"、文案"Another quick visual trick"——突出快速找到 middle C。
+- 1 个横屏视频全宽独立块：`ZCIEcgRnMZc`(How to Find Middle C on Any Size Keyboard/PianoVideoLessons) label "Keys & Every C Explained"、文案"complete walkthrough of the keys... middle C, how notes repeat, every C on full-size/36/49/61-key"——突出系统介绍琴键+middle C+其他 C。
+- 升级渲染逻辑：`embeds` 项支持 `desc`(文案)+`ratio`(9/16竖屏|16/9横屏)；`build_video_detail()` 按 ratio 分流——竖屏进 `.shorts-row.cols-N`，横屏进 `.embed-wide>(.wide-frame+.wide-copy)`。向后兼容 piano-posture（无 ratio/desc，仍 cols-4 单行）。CSS 新增 `.short-desc/.embed-wide/.wide-frame/.wide-copy`，`.shorts-row` 改 cols-N 类控制列数。CSS_VER 56ba0f28。
+
 ## 2026-11-20 补充 10：piano-posture 4 个 shorts 改为单行并排
 
 - 用户要求 4 个视频放 1 行（截图画 4 红框并排）。embeds 数据从 3 分组改为扁平列表（每个 {id,label}，label 分别为 Sit Position / Hand Position / Incorrect Posture / Correct Posture），`build_video_detail()` 渲染成 1 个 `.shorts-row` 含 4 个 `.short-item`（frame+下方 label）。

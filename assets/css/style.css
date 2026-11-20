@@ -471,18 +471,28 @@ p{color:var(--muted)}
 }
 .vp-play{width:74px;height:74px;border-radius:50%;background:var(--surface);color:var(--primary);font-size:1.6rem;display:grid;place-items:center;box-shadow:var(--shadow);padding-left:5px}
 .vp-label{font-family:var(--font-sans);font-weight:700;font-size:.95rem;color:var(--primary-dark)}
-/* ---- Embedded YouTube shorts (single row) ---- */
+/* ---- Embedded YouTube videos ---- */
 .video-embeds{margin:26px 0 38px}
-.shorts-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.short-item{display:flex;flex-direction:column;gap:10px;min-width:0}
+.shorts-row{display:grid;gap:16px}
+.shorts-row.cols-2{grid-template-columns:repeat(2,1fr)}
+.shorts-row.cols-3{grid-template-columns:repeat(3,1fr)}
+.shorts-row.cols-4{grid-template-columns:repeat(4,1fr)}
+.short-item{display:flex;flex-direction:column;gap:8px;min-width:0}
 .short-frame{
   position:relative;width:100%;aspect-ratio:9/16;
   border-radius:var(--r-md);overflow:hidden;border:1px solid var(--border);
   box-shadow:var(--shadow);background:#000;
 }
 .short-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.short-label{font-family:var(--font-sans);font-weight:700;font-size:.86rem;color:var(--ink);text-align:center;line-height:1.3}
-@media(max-width:720px){.shorts-row{grid-template-columns:repeat(2,1fr)}}
+.short-label{font-family:var(--font-sans);font-weight:800;font-size:.92rem;color:var(--ink);text-align:center;line-height:1.3}
+.short-desc{font-size:.82rem;line-height:1.5;color:var(--muted);text-align:center;margin:0}
+.embed-wide{margin-top:30px;padding:22px;background:var(--bg-soft);border:1px solid var(--border);border-radius:var(--r-md)}
+.wide-frame{position:relative;width:100%;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:#000;box-shadow:var(--shadow)}
+.wide-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.wide-copy{margin-top:16px}
+.wide-copy h3{font-family:var(--font-sans);font-weight:800;font-size:1.12rem;margin:0 0 8px;color:var(--ink)}
+.wide-copy p{font-size:.92rem;line-height:1.6;color:var(--muted);margin:0;max-width:720px}
+@media(max-width:720px){.shorts-row.cols-3,.shorts-row.cols-4{grid-template-columns:repeat(2,1fr)}}
 .related-box{margin-top:34px;padding:24px 26px;background:var(--bg-soft);border:1px solid var(--border);border-radius:var(--r-md)}
 .related-box h4{font-family:var(--font-sans);font-weight:800;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:14px}
 .related-box .read-link{display:block;margin:6px 0}
