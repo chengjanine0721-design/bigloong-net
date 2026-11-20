@@ -63,3 +63,8 @@
 - 封面图产出后，在 `build.py` 的该 POSTS 条目加 `"cover_img": "/assets/img/{slug}/cover.jpg"`（同时把 `image` 也设为它）。
 - 运行 `build.py` 重建：`build_article()` 会把 cover 渲染到右侧栏顶部，并自动写入 `og:image` 与结构化数据 `image`。
 - 底图 `base.jpg` 可不入库（体积大），但保留便于复现；入库前确认 `.gitignore` 规则。
+
+## 十、浅色底图模式（`--light`，2026-11-20 新增）
+- 若底图是浅色/明亮插画风（左侧为浅色负空间），默认深色遮罩+白字会看不清。此时给 `make_cover.py` 加 `--light`：改用浅色渐变遮罩 + 深墨蓝标题/深金点缀，保证对比度。
+- 命令在第八节标准命令末尾追加 `--light` 即可；其余参数不变。暗色底图不要加此参数。
+- 实例：`how-to-improve-piano-finger-speed-and-dexterity/cover.jpg` 用明亮蓝紫插画风（动态速度线表现手指速度），走的就是 `--light` 模式。

@@ -88,17 +88,19 @@ def wrap_lines(draw, text, font, max_width, max_lines=2):
     return lines[:max_lines]
 
 
-def gradient_overlay(base):
-    """从左到右深色渐变: 左侧不透明, ~62% 处归零; 叠加整体轻暗化。"""
+def gradient_overlay(base, light=False):
+    """从左到右渐变遮罩: 左侧不透明, ~62% 处归零。
+    默认深色遮罩(配白字); light=True 时用浅色遮罩(配深色字), 适配浅色底图。"""
     ov = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     px = ov.load()
     gx = 0.62 * W
+    tint = (255, 252, 248) if light else (0, 0, 0)
     for x in range(W):
         t = max(0.0, 1.0 - x / gx)
-        a = int(235 * (t ** 1.35)) + 26  # 左侧强, 右端基础暗化 26
+        a = int(235 * (t ** 1.35)) + 26
         a = min(a, 245)
         for y in range(H):
-            px[x, y] = (0, 0, 0, a)
+            px[x, y] = tint + (a,)
     return Image.alpha_composite(base.convert("RGBA"), ov)
 
 
@@ -127,9 +129,28 @@ def build(args):
         box = tuple(int(v) for v in args.inpaint.split(","))
         base = inpaint_region(base, box)
 
-    # 3) 渐变遮罩
-    img = gradient_overlay(base)
+    # 3) 渐变遮罩 (light 模式用浅色遮罩配深色字)
+    light = getattr(args, "light", False)
+    img = gradient_overlay(base, light=light)
     draw = ImageDraw.Draw(img)
+
+    # 配色: 深色底图用白字+亮金; 浅色底图用深墨蓝字+深金
+    if light:
+        C_TITLE = (30, 32, 74)
+        C_EYEBROW = (150, 104, 22)   # 深金, 浅底上可读
+        C_SUB = (60, 64, 92)
+        C_SIGN = (30, 32, 74)
+        C_READ = (150, 104, 22)
+        C_BRAND = (150, 104, 22)
+        C_RULE = (150, 152, 168)
+    else:
+        C_TITLE = WHITE
+        C_EYEBROW = GOLD
+        C_SUB = CREAM
+        C_SIGN = WHITE
+        C_READ = GOLD
+        C_BRAND = GOLD
+        C_RULE = (120, 116, 108)
 
     # 4) 字体
     f_eyebrow = load_font(F_OUTFIT, 24, 500)
@@ -144,10 +165,10 @@ def build(args):
 
     # 5) 眉标(金色, 字距)
     eyebrow = args.eyebrow.upper()
-    draw_spaced(draw, (LEFT, 132), eyebrow, f_eyebrow, GOLD, spacing=3)
+    draw_spaced(draw, (LEFT, 132), eyebrow, f_eyebrow, C_EYEBROW, spacing=3)
 
     # 6) 金色短线
-    draw.rounded_rectangle([LEFT, 182, LEFT + 58, 185], radius=1, fill=GOLD)
+    draw.rounded_rectangle([LEFT, 182, LEFT + 58, 185], radius=1, fill=C_EYEBROW)
 
     # 7) 主标题(最多2行, 字号自适应: 大字号放不下完整标题则降级, 不截断)
     title = args.title
@@ -166,25 +187,25 @@ def build(args):
     ty = 214
     line_h = int(font.size * 1.12)
     for ln in lines:
-        draw.text((LEFT, ty), ln, font=font, fill=WHITE, stroke_width=0)
+        draw.text((LEFT, ty), ln, font=font, fill=C_TITLE, stroke_width=0)
         ty += line_h
 
     # 8) 副标题(最多2行)
     if args.subtitle:
         sub_y = ty + 14
         for ln in wrap_lines(draw, args.subtitle, f_sub, maxw - 10, 2):
-            draw.text((LEFT, sub_y), ln, font=f_sub, fill=CREAM)
+            draw.text((LEFT, sub_y), ln, font=f_sub, fill=C_SUB)
             sub_y += 38
 
     # 9) 署名区(底部): 细线 + By <author> + 阅读时长
-    draw.line([LEFT, 690, LEFT + 360, 690], fill=(120, 116, 108), width=1)
-    draw_spaced(draw, (LEFT, 706), "By " + args.author, f_sign, WHITE, spacing=1)
+    draw.line([LEFT, 690, LEFT + 360, 690], fill=C_RULE, width=1)
+    draw_spaced(draw, (LEFT, 706), "By " + args.author, f_sign, C_SIGN, spacing=1)
     if args.read:
-        draw_spaced(draw, (LEFT, 738), args.read.upper(), f_read, GOLD, spacing=3)
+        draw_spaced(draw, (LEFT, 738), args.read.upper(), f_read, C_READ, spacing=3)
 
     # 10) 品牌(右下)
     bw_brand = draw.textlength("bigloong.net", font=f_brand)
-    draw.text((W - LEFT - bw_brand, H - 70), "bigloong.net", font=f_brand, fill=GOLD)
+    draw.text((W - LEFT - bw_brand, H - 70), "bigloong.net", font=f_brand, fill=C_BRAND)
 
     out = img.convert("RGB")
 
@@ -224,6 +245,7 @@ def main():
     ap.add_argument("--author", default="Alice Baker")
     ap.add_argument("--read", default="")
     ap.add_argument("--inpaint", default="", help="水印区域 l,t,r,b, 如 1080,20,1190,70")
+    ap.add_argument("--light", action="store_true", help="浅色底图模式: 浅色遮罩+深色字")
     args = ap.parse_args()
     raise SystemExit(build(args))
 
