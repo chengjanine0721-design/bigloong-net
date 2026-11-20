@@ -328,6 +328,7 @@ VIDEOS = [
         "slug": "how-to-play-twinkle-twinkle-little-star-on-the-piano",
         "title": "How to Play Twinkle Twinkle Little Star on the Piano",
         "desc": "A clear lesson on how to play Twinkle Twinkle Little Star on the piano. Learn the simple right hand melody by ear and note, then add an easy left hand accompaniment.",
+        "cover_img": "/assets/img/videos/twinkle-cover.jpg",
         "duration": "8:05",
         "emoji": "\U0001F31F",
         "c1": "#FFF0C9", "c2": "#E7E5F6",
@@ -855,15 +856,23 @@ def build_faq_article(f):
           page(f["seo_title"], f["desc"], body, active="faq",
                crumbs=crumbs, jsonld=ld, keywords=f["keywords"], canonical=canonical))
 
+def video_thumb(v):
+    if v.get("cover_img"):
+        return (f'<div class="post-thumb post-thumb-cover">'
+                f'<img src="{v["cover_img"]}" alt="{v["title"]}" loading="lazy">'
+                f'<span class="cat">Video</span>'
+                f'<span class="dur-badge">{v["duration"]}</span></div>')
+    return (f'<div class="post-thumb" style="--c1:{v["c1"]};--c2:{v["c2"]}">'
+            f'<span class="cat">Video</span>'
+            f'<span class="thumb-emoji">{v["emoji"]}</span>'
+            f'<span class="dur-badge">{v["duration"]}</span></div>')
+
+
 def build_video_index():
     cards = ""
     for v in VIDEOS:
         cards += f'''<article class="post-card">
-  <div class="post-thumb" style="--c1:{v['c1']};--c2:{v['c2']}">
-    <span class="cat">Video</span>
-    <span class="thumb-emoji">{v['emoji']}</span>
-    <span class="dur-badge">{v['duration']}</span>
-  </div>
+  {video_thumb(v)}
   <div class="post-body">
     <h3><a href="/video-tutorial/{v['slug']}/">{v['title']}</a></h3>
     <p>{v['desc']}</p>
@@ -902,11 +911,7 @@ def related_video_cards(slug, n=3):
     cards = ""
     for x in picked:
         cards += f'''<article class="post-card">
-  <div class="post-thumb" style="--c1:{x['c1']};--c2:{x['c2']}">
-    <span class="cat">Video</span>
-    <span class="thumb-emoji">{x['emoji']}</span>
-    <span class="dur-badge">{x['duration']}</span>
-  </div>
+  {video_thumb(x)}
   <div class="post-body">
     <h3><a href="/video-tutorial/{x['slug']}/">{x['title']}</a></h3>
     <p>{x['desc']}</p>

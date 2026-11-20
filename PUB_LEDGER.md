@@ -1,5 +1,11 @@
 # bigloong.net 发布台账
 
+## 2026-11-20 补充 15：twinkle 视频卡片封面换真实图
+
+- 用户要求：`/video-tutorial/` 列表页里 "How to Play Twinkle Twinkle Little Star" 那张卡片的缩略图（原 emoji+渐变块）换成真实封面图。
+- 素材：`D:/workbuddy/buddy-files/piano-cover_TwinkleTwinkleLittleStar_1200x800.png`（深蓝底+琴键+PLAY+Twinkle Twinkle Little Star 字样）。转换存 `assets/img/videos/twinkle-cover.jpg`：1200×800、JPEG q90、subsampling=0(4:4:4)、progressive、81KB(<200KB 规范)。
+- VIDEOS twinkle 条目加 `cover_img`；新增 `video_thumb(v)`：有 cover_img 则 `<div class="post-thumb post-thumb-cover"><img...>` 保留 Video 标签+时长徽标，否则回退原渐变 emoji 块。`build_video_index()` 与 `related_video_cards()` 都改调 `video_thumb()`——列表页 twinkle 用真实封面(其余4张仍 emoji)，且 twinkle 出现在其他页推荐卡时(3 页)也用上封面。复用 blog 的 `.post-thumb-cover` CSS(cat/dur-badge z-index2 在上方)，未改 CSS。
+
 ## 2026-11-20 补充 14：所有 video-tutorial 详情页底部改推荐卡
 
 - 用户要求：所有 `/video-tutorial/` 详情页底部那个 "More video tutorials / Browse the full collection / All tutorials" CTA band 改成推荐其他 video tutorial（截图红框处），对齐 blog 的 Related Articles。
