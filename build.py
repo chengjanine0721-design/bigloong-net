@@ -891,6 +891,32 @@ def build_video_index():
     write("video-tutorial/index.html", page("Video Tutorial | Bigloong", "Short, focused piano video tutorials by Bigloong.",
           body, active="video", crumbs=crumbs, jsonld=ld, canonical="/video-tutorial/"))
 
+def related_video_cards(slug, n=3):
+    """Recommend n other video tutorials, never the current one. Rotate by the
+    current video's position so each page shows a different valid set."""
+    others = [x for x in VIDEOS if x["slug"] != slug]
+    if not others:
+        return ""
+    idx = next((i for i, x in enumerate(VIDEOS) if x["slug"] == slug), 0)
+    picked = [others[(idx + k) % len(others)] for k in range(min(n, len(others)))]
+    cards = ""
+    for x in picked:
+        cards += f'''<article class="post-card">
+  <div class="post-thumb" style="--c1:{x['c1']};--c2:{x['c2']}">
+    <span class="cat">Video</span>
+    <span class="thumb-emoji">{x['emoji']}</span>
+    <span class="dur-badge">{x['duration']}</span>
+  </div>
+  <div class="post-body">
+    <h3><a href="/video-tutorial/{x['slug']}/">{x['title']}</a></h3>
+    <p>{x['desc']}</p>
+    <div class="post-meta"><img class="author" src="/assets/img/author-avatar.png" alt="Alice Baker"><span>{AUTHOR}</span></div>
+    <a class="read-link" href="/video-tutorial/{x['slug']}/">Watch tutorial <span class="arrow">&rarr;</span></a>
+  </div>
+</article>'''
+    return cards
+
+
 def build_video_detail(v):
     slug = v["slug"]
     steps = "".join(f'<li>{s}</li>' for s in v["steps"])
@@ -959,11 +985,10 @@ def build_video_detail(v):
   </div>
 </div>
 </div></section>
-<div class="section"><div class="cta-band">
-  <h2>More video tutorials</h2>
-  <p>Browse the full collection of piano lessons.</p>
-  <div class="actions"><a href="/video-tutorial/" class="btn btn-primary">All tutorials</a></div>
-</div></div>
+<section class="section section-soft"><div class="wrap">
+  <div class="section-head"><span class="eyebrow">Keep exploring</span><h2>Related Video Tutorials</h2></div>
+  <div class="grid grid-3">{related_video_cards(slug)}</div>
+</div></section>
 </main>'''
     canonical = "/video-tutorial/" + slug + "/"
     write("video-tutorial/%s/index.html" % slug,

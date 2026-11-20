@@ -1,5 +1,12 @@
 # bigloong.net 发布台账
 
+## 2026-11-20 补充 14：所有 video-tutorial 详情页底部改推荐卡
+
+- 用户要求：所有 `/video-tutorial/` 详情页底部那个 "More video tutorials / Browse the full collection / All tutorials" CTA band 改成推荐其他 video tutorial（截图红框处），对齐 blog 的 Related Articles。
+- 新增 `related_video_cards(slug, n=3)`：参照 `related_cards()`，从 VIDEOS 排除自身、按当前位置轮转取 3 篇，复用视频列表页 `.post-card` 卡片样式（渐变缩略图+Video 标签+时长+标题+作者+Watch tutorial 链接）。
+- `build_video_detail()` 底部 `<div class="cta-band">More video tutorials...` 换成 `<section class="section section-soft">` + `.section-head`(eyebrow "Keep exploring" + h2 "Related Video Tutorials") + `.grid.grid-3`。5 篇详情页全部生效，各页推荐组合不同、均不含自身。未改 CSS。
+- 验证：每页 Related=1 / 旧CTA=0 / 3 卡 / canonical 自链 1（推荐卡无自身）。
+
 ## 2026-11-20 补充 13：twinkle-twinkle 视频页重构（介绍+视频+琴谱+锚链接）
 
 - 页面 `/video-tutorial/how-to-play-twinkle-twinkle-little-star-on-the-piano/`，用户要求：开头约100词介绍（级别/适合beginners/多久学会）→ 嵌入视频 → 提供琴谱图 → "twinkle twinkle little star piano sheet" 作锚文本链接到 makingmusicfun.net PDF；保留 What you will learn。
