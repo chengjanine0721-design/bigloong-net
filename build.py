@@ -502,6 +502,22 @@ def build_home():
       <button class="faq-q">{f['q']}<span class="plus">+</span></button>
       <div class="faq-a"><p>{f['a']}</p></div>
     </div>''' for f in FAQS[:3])
+    videos = [
+        {"id":"Fs4LZFKoXqo","title":"Raindrops &mdash; Calm Piano Tutorial","channel":"Soothing Tutorials","tag":"SIGHT-PLAYING","url":"https://www.youtube.com/watch?v=Fs4LZFKoXqo&amp;list=PLQ_PIlf6OzqLlGAej0q49Tvip9wlqZoj0"},
+        {"id":"QBH6IpRkVDs","title":"Piano for Beginners, Lesson 1: The Keyboard","channel":"Bill Hilton","tag":"BEGINNER LESSON","url":"https://www.youtube.com/watch?v=QBH6IpRkVDs&amp;list=PLpOuhygfD7QnP46wUgQudOySX_z2UOhXs"},
+        {"id":"Yv-W4ezHvH0","title":"Full 10-Hour Piano Course for Beginners","channel":"Zak Serroukh","tag":"FULL COURSE","url":"https://www.youtube.com/watch?v=Yv-W4ezHvH0"},
+    ]
+    video_cards = "".join(f'''<a class="video-card" href="{v['url']}" target="_blank" rel="noopener noreferrer">
+      <div class="video-thumb">
+        <img src="/assets/img/videos/{v['id']}.webp" alt="{v['title']}" loading="lazy">
+        <span class="video-play">&#9654;</span>
+        <span class="video-tag">{v['tag']}</span>
+      </div>
+      <div class="video-info">
+        <h4 class="video-title">{v['title']}</h4>
+        <span class="video-channel">{v['channel']}</span>
+      </div>
+    </a>''' for v in videos)
     body = f'''<main>
 <section class="hero">
   <div class="staff-lines"></div>
@@ -561,6 +577,14 @@ def build_home():
         </div>
       </div>
     </div>
+  </div>
+  <div class="video-strip">
+    <div class="video-strip-head">
+      <span class="eyebrow">Watch &amp; learn</span>
+      <h3>A library of piano videos worth your time</h3>
+      <p>From calm sight-reading to full beginner courses, we collect the piano learning videos that actually help you play.</p>
+    </div>
+    <div class="grid grid-3">{video_cards}</div>
   </div>
 </div></section>
 

@@ -266,6 +266,38 @@ p{color:var(--muted)}
 .read-link .arrow{transition:.2s}
 .post-card:hover .read-link .arrow{transform:translateX(4px)}
 
+/* ---- Home video strip ---- */
+.video-strip{margin-top:64px;padding-top:56px;border-top:1px solid var(--border)}
+.video-strip-head{text-align:center;max-width:680px;margin:0 auto 40px}
+.video-strip-head h3{font-size:clamp(1.6rem,3.4vw,2.3rem);line-height:1.2;margin:12px 0 14px}
+.video-strip-head p{font-size:1.02rem}
+.video-card{
+  display:block;text-decoration:none;color:inherit;position:relative;
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);
+  overflow:hidden;box-shadow:var(--shadow);transition:transform .3s,box-shadow .3s;
+}
+.video-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-hover)}
+.video-thumb{position:relative;aspect-ratio:16/9;overflow:hidden;background:#1a1a1e}
+.video-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease,filter .3s ease}
+.video-card:hover .video-thumb img{transform:scale(1.05);filter:brightness(.82)}
+.video-play{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:60px;height:60px;border-radius:50%;background:rgba(255,255,255,.94);
+  color:var(--primary);display:grid;place-items:center;font-size:1.4rem;padding-left:4px;
+  box-shadow:0 8px 26px rgba(0,0,0,.28);transition:transform .3s,background .3s,color .3s;
+}
+.video-card:hover .video-play{transform:translate(-50%,-50%) scale(1.1);background:var(--primary);color:#fff}
+.video-tag{
+  position:absolute;left:14px;top:14px;z-index:2;pointer-events:none;
+  font-size:.66rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  background:rgba(82,84,142,.92);color:#fff;padding:6px 11px;border-radius:999px;
+}
+.video-info{padding:20px 22px 22px}
+.video-title{font-size:1.08rem;line-height:1.35;margin-bottom:9px;color:var(--ink)}
+.video-card:hover .video-title{color:var(--primary)}
+.video-channel{font-size:.82rem;color:var(--faint)}
+@media (max-width:820px){.video-strip-head{margin-bottom:28px}.video-strip{margin-top:44px;padding-top:40px}}
+
 /* ---------- Article page ---------- */
 .article{display:grid;grid-template-columns:1fr 300px;gap:56px;align-items:start}
 .article-main h1{font-size:clamp(2.2rem,4.5vw,3.4rem);margin:18px 0 20px;line-height:1.1}

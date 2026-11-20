@@ -1,5 +1,9 @@
 # bigloong.net 发布台账
 
+## 2026-11-20 补充 6：首页 "Built for piano learners" 屏下新增 3 视频推荐区
+
+用户要求把该屏下方区域改成 3 个视频卡片，侧重"收集各种钢琴学习视频"，给了 3 个 YouTube 链接。实现：下载 3 个视频 maxresdefault 封面到本地 `assets/img/videos/{id}.webp`（1280×720→webp q82，41-60KB，不依赖 YouTube CDN），build_home() 新增 videos 列表（视频 ID/标题/频道/分类标签/完整 YouTube URL），在 split 后加 `.video-strip`（eyebrow "Watch & learn" + 标题 + 说明 + `grid grid-3`）。CSS 新增 `.video-card/.video-thumb/.video-play/.video-tag/.video-info` 系列：16:9 封面、居中播放按钮、悬浮放大+变暗、分类标签、整卡 target=_blank 跳转 YouTube。三个视频：①Raindrops 舒缓教程(Soothing Tutorials) ②Piano for Beginners Lesson 1(Bill Hilton) ③Full 10-Hour Piano Course(Zak Serroukh)。本地 headless 截图确认渲染正常。正文/其他 section/URL 不动。
+
 ## 2026-11-20 补充 5：静态资源加 cache-busting 版本号修复 hero 黑字
 
 用户反馈线上首页 Bigloong 仍是纯黑字、无光标（上一轮已加紫色渐变+光标）。排查：源码 HTML 的 `hero-word` span 在、线上 CSS 含完整 `.hero-word` 紫色渐变规则，本地 headless 渲染正常 → 判定为浏览器/CDN 缓存了旧 CSS（旧版无 `.hero-word` 规则，span 继承 h1 黑色）。解决：build.py 顶部新增 `_asset_ver()` 按 CSS/JS 文件 md5 前 8 位生成版本号，`head()` 与 `footer()` 的引用改为 `style.css?v={CSS_VER}` / `main.js?v={JS_VER}`；内容一变版本号自动变，永久绕过缓存。本地截图复核：Bigloong 紫色渐变+闪烁光标正常（CSS_VER=bde302a0）。导航/正文/URL/表格不动。
