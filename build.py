@@ -266,6 +266,11 @@ VIDEOS = [
             "Keep elbows slightly away from your body and let your shoulders drop.",
             "Curve your fingers naturally and play from the weight of your arm rather than finger force alone.",
         ],
+        "embeds": [
+            {"title": "Sit Position", "ids": ["MoiMo6S9CE8"]},
+            {"title": "Hand Position", "ids": ["ROM9szRJHpg"]},
+            {"title": "Correct vs Incorrect Posture", "ids": ["eq1-8RWO8S4", "EItL4YrvASA"]},
+        ],
     },
     {
         "slug": "finding-middle-c-on-piano",
@@ -874,6 +879,21 @@ def build_video_detail(v):
               "thumbnailUrl": "https://" + SITE + "/assets/css/placeholder.jpg"}
     crumbs = [("Home", "/"), ("Video Tutorial", "/video-tutorial/"), (v["title"], None)]
     ld = '<script type="application/ld+json">' + json.dumps(ld_obj, ensure_ascii=False) + '</script>' + ld_breadcrumb(crumbs)
+    if v.get("embeds"):
+        groups = ""
+        for g in v["embeds"]:
+            frames = "".join(
+                f'<div class="short-frame"><iframe src="https://www.youtube.com/embed/{vid}" '
+                f'title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; '
+                f'clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" '
+                f'allowfullscreen loading="lazy"></iframe></div>' for vid in g["ids"])
+            groups += (f'<div class="embed-group"><h3>{g["title"]}</h3>'
+                       f'<div class="shorts-row">{frames}</div></div>')
+        media = f'<div class="video-embeds">{groups}</div>'
+    else:
+        media = (f'<div class="video-placeholder" style="background:linear-gradient(145deg,{v["c1"]},{v["c2"]})">'
+                 f'<span class="vp-play">&#9654;</span>'
+                 f'<span class="vp-label">Video tutorial coming soon</span></div>')
     body = f'''<main>
 <section class="section"><div class="wrap">
 <div class="article single-col">
@@ -881,10 +901,7 @@ def build_video_detail(v):
     <span class="eyebrow">Video Tutorial &middot; {v['duration']}</span>
     <h1>{v['title']}</h1>
     <div class="article-meta"><img class="author" src="/assets/img/author-avatar.png" alt="Alice Baker"><span>By {AUTHOR}</span></div>
-    <div class="video-placeholder" style="background:linear-gradient(145deg,{v['c1']},{v['c2']})">
-      <span class="vp-play">&#9654;</span>
-      <span class="vp-label">Video tutorial coming soon</span>
-    </div>
+    {media}
     <div class="prose">
       <p class="article-lead">{v['desc']}</p>
       <h2 id="steps">What you will learn</h2>

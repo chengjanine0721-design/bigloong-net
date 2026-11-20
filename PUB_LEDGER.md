@@ -1,5 +1,12 @@
 # bigloong.net 发布台账
 
+## 2026-11-20 补充 9：piano-posture 页嵌入 4 个 YouTube shorts
+
+- 页面：`/video-tutorial/piano-posture-for-beginners/`，把原 "Video tutorial coming soon" 占位块换成 4 个真实 iframe 嵌入的 YouTube shorts（竖屏 9:16，lazy load）。
+- 分组：① Sit Position = `MoiMo6S9CE8`(How To Sit At The Piano / The Singer Whisperer)；② Hand Position = `ROM9szRJHpg`(CORRECT hand posture / Pianote)；③ Correct vs Incorrect Posture（正误姿势对比，两条并排）= `eq1-8RWO8S4`(hand position easy fix / Joshua keys) + `EItL4YrvASA`(RIGHT way to sit / Emma Blair)。
+- 实现：VIDEOS[0] 新增 `embeds` 字段（title+ids）；`build_video_detail()` 有 embeds 则渲染分组 iframe，无则回退原占位块（其余 4 篇视频页不受影响）。CSS `.video-embeds/.embed-group/.shorts-row/.short-frame` 响应式，单条居中放大、双条并排对比。
+- 本地 1080 宽 headless 截图确认三组标题+4 视频缩略图正常。CSS_VER 2f74cb8f。
+
 ## 2026-11-20 补充 8：删除 "Built for piano learners" 屏 + 视频标题单行
 
 用户要求：①删除 "Why Bigloong / Built for piano learners" 那一整屏；②视频区标题保持一行。实现：build_home() 删掉整个 `.split` 块（含文案、mock 视觉、Learn more about us 链接），视频区 `.video-strip` 保留为该 section 唯一内容；CSS `.video-strip` 去掉原 margin-top/padding-top/border-top（原为跟在 split 后的分隔），`.video-strip-head` max-width 680→960px、h3 加 `white-space:nowrap` + 字号上限 2.3→2.05rem 保证桌面单行，p 限宽 680 居中；媒体查询 ≤820px 恢复 h3 换行避免窄屏溢出。本地 1080 宽截图确认：该屏已删、标题单行完整、3 视频卡片正常。CSS_VER=615ca7c7。
