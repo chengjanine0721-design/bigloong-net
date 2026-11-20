@@ -267,9 +267,10 @@ VIDEOS = [
             "Curve your fingers naturally and play from the weight of your arm rather than finger force alone.",
         ],
         "embeds": [
-            {"title": "Sit Position", "ids": ["MoiMo6S9CE8"]},
-            {"title": "Hand Position", "ids": ["ROM9szRJHpg"]},
-            {"title": "Correct vs Incorrect Posture", "ids": ["eq1-8RWO8S4", "EItL4YrvASA"]},
+            {"id": "MoiMo6S9CE8", "label": "Sit Position"},
+            {"id": "ROM9szRJHpg", "label": "Hand Position"},
+            {"id": "eq1-8RWO8S4", "label": "Incorrect Posture"},
+            {"id": "EItL4YrvASA", "label": "Correct Posture"},
         ],
     },
     {
@@ -880,16 +881,14 @@ def build_video_detail(v):
     crumbs = [("Home", "/"), ("Video Tutorial", "/video-tutorial/"), (v["title"], None)]
     ld = '<script type="application/ld+json">' + json.dumps(ld_obj, ensure_ascii=False) + '</script>' + ld_breadcrumb(crumbs)
     if v.get("embeds"):
-        groups = ""
-        for g in v["embeds"]:
-            frames = "".join(
-                f'<div class="short-frame"><iframe src="https://www.youtube.com/embed/{vid}" '
-                f'title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; '
-                f'clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" '
-                f'allowfullscreen loading="lazy"></iframe></div>' for vid in g["ids"])
-            groups += (f'<div class="embed-group"><h3>{g["title"]}</h3>'
-                       f'<div class="shorts-row">{frames}</div></div>')
-        media = f'<div class="video-embeds">{groups}</div>'
+        items = "".join(
+            f'<div class="short-item"><div class="short-frame">'
+            f'<iframe src="https://www.youtube.com/embed/{e["id"]}" '
+            f'title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; '
+            f'clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" '
+            f'allowfullscreen loading="lazy"></iframe></div>'
+            f'<span class="short-label">{e["label"]}</span></div>' for e in v["embeds"])
+        media = f'<div class="video-embeds"><div class="shorts-row">{items}</div></div>'
     else:
         media = (f'<div class="video-placeholder" style="background:linear-gradient(145deg,{v["c1"]},{v["c2"]})">'
                  f'<span class="vp-play">&#9654;</span>'

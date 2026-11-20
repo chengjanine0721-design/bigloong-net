@@ -1,5 +1,10 @@
 # bigloong.net 发布台账
 
+## 2026-11-20 补充 10：piano-posture 4 个 shorts 改为单行并排
+
+- 用户要求 4 个视频放 1 行（截图画 4 红框并排）。embeds 数据从 3 分组改为扁平列表（每个 {id,label}，label 分别为 Sit Position / Hand Position / Incorrect Posture / Correct Posture），`build_video_detail()` 渲染成 1 个 `.shorts-row` 含 4 个 `.short-item`（frame+下方 label）。
+- CSS `.shorts-row` 改 `grid-template-columns:repeat(4,1fr)`（旧 `.embed-group/.embed-group h3` 删除），`.short-item` flex 列，`.short-frame width:100%` aspect 9/16，`.short-label` 下方居中。≤720px 降为 2 列。CSS_VER 95564fcd。
+
 ## 2026-11-20 补充 9：piano-posture 页嵌入 4 个 YouTube shorts
 
 - 页面：`/video-tutorial/piano-posture-for-beginners/`，把原 "Video tutorial coming soon" 占位块换成 4 个真实 iframe 嵌入的 YouTube shorts（竖屏 9:16，lazy load）。
