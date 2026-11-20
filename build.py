@@ -62,7 +62,8 @@ POSTS = [
         "seo_title": "How Much Does a Piano Cost in 2026? Complete Price Guide by Type",
         "full_h1": "How Much Does a Piano Cost in 2026? (Complete Price Guide by Type)",
         "body_file": "_piano_cost_body.html",
-        "image": "/assets/img/how-to-start-learning-piano/average-piano-pricing.webp",
+        "image": "/assets/img/how-much-does-a-piano-cost/cover.jpg",
+        "cover_img": "/assets/img/how-much-does-a-piano-cost/cover.jpg",
         "keywords": "how much does a piano cost, piano prices, digital piano cost, upright piano cost, steinway piano cost",
         "toc": [
             ("price-by-type", "Price Ranges by Type"),
@@ -124,7 +125,8 @@ POSTS = [
         "seo_title": "How to Improve Piano Finger Speed and Dexterity: Exercises That Work",
         "full_h1": "How to Improve Piano Finger Speed and Dexterity (Step by Step)",
         "body_file": "_finger_speed_body.html",
-        "image": "/assets/img/how-to-improve-piano-finger-speed-and-dexterity/black-and-white-keys-on-a-piano-keyboard.webp",
+        "image": "/assets/img/how-to-improve-piano-finger-speed-and-dexterity/cover.jpg",
+        "cover_img": "/assets/img/how-to-improve-piano-finger-speed-and-dexterity/cover.jpg",
         "keywords": "how to improve piano finger speed and dexterity, finger dexterity exercises piano, play piano faster, piano finger speed test, improve finger speed at home",
         "toc": [
             ("what-is-dexterity", "Speed vs Dexterity"),
@@ -155,7 +157,8 @@ POSTS = [
         "seo_title": "How to Read Sheet Music for Piano: A Beginner's Guide",
         "full_h1": "How to Read Sheet Music for Piano: A Beginner's Guide",
         "body_file": "_read_sheet_music_body.html",
-        "image": "/assets/img/how-to-read-sheet-music-piano/find-middle-c-on-piano.webp",
+        "image": "/assets/img/how-to-read-sheet-music-piano/cover.jpg",
+        "cover_img": "/assets/img/how-to-read-sheet-music-piano/cover.jpg",
         "keywords": "how to read sheet music piano, how to read piano sheet music for beginners, learn to read piano sheet, how to learn sheet music, learn piano notes",
         "toc": [
             ("the-staff", "The Staff"),

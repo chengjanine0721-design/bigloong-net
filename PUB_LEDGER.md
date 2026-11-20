@@ -1,5 +1,34 @@
 # bigloong.net 发布台账
 
+## 2026-11-20 补充：全站 blog 首图统一为封面图
+
+用户要求所有 blog 的标题/首图/目录统一成参考页 `how-to-start-learning-piano` 的布局。核查后：5 篇均走同一 `build_article()` 模板，标题区与目录区本就一致，唯一差异是首图——2 篇已有真实封面，3 篇仍是 emoji 渐变块。已为这 3 篇补齐封面图（两步分层：ImageGen 底图 + `tools/make_cover.py` 叠字 + `--inpaint` 去水印），并把 `image`/`cover_img` 指向新 cover.jpg。
+
+| slug | 首图（旧 → 新） | 封面校验 |
+|---|---|---|
+| how-much-does-a-piano-cost | 渐变🎹 → cover.jpg（三角钢琴底图） | 1200x800 / 155.3KB / q90 4:4:4 / PASS |
+| how-to-improve-piano-finger-speed-and-dexterity | 渐变🖙 → cover.jpg（手指键盘底图） | 1200x800 / 186.9KB / q90 4:4:4 / PASS |
+| how-to-read-sheet-music-piano | 渐变🎴 → cover.jpg（乐谱底图） | 1200x800 / 171.4KB / q90 4:4:4 / PASS |
+
+重建后 5 篇详情页首图全部为 `article-cover-img`，blog 集合页 5 张卡片封面图齐全。仅样式统一，未改正文/关键词/URL/发布日，飞书表格无需回填。
+
+## 2026-11-20（2 篇，blog×1 + faq×1）
+
+| slug | 类型 | 页面 URL | 表格行 | B列关键词嵌入 | 状态码 | F栏回填 | A栏URL回填 | 封面图 |
+|---|---|---|---|---|---|---|---|---|
+| how-to-play-chords-on-piano | blog | /blog/how-to-play-chords-on-piano/ | MGo4JP 第7行 | 12/12 全部自然嵌入 | ✅ 200 | ✅ 11.20 | ✅ 完整URL | ✅ cover.jpg 已生成（ImageGen底图+脚本叠字，1200x800/171.5KB，去水印，size_ok/bytes_ok=True） |
+| how-many-keys-on-a-piano | faq（长文FAQ） | /faq/how-many-keys-on-a-piano/ | MGo4JP 第43行 | 6/6 全部自然嵌入 | ✅ 200 | ✅ 11.20 | ✅ 完整URL | — (faq 不需要封面) |
+
+**发布状态：✅ 已全部上线。** push `3332b3a..b3d91a5`（commit b3d91a5），Cloudflare 部署完成，2 个页面 URL + 封面图 + sitemap 线上核验均 200。F7/F43 已回填 11.20（csv-put 掉尾零后改用 cells-set 文本重写修正），A7/A43 已替换为完整 https URL 并读回核对。飞书通知：bot 身份推送 URL 清单给 open_id `ou_f03eaff539ac11b035b93197e723ef45`。
+
+**说明**
+- faq 篇 A 列原写 `/blog/how-many-keys-on-a-piano`，按文档第 2 节规范（G=faq）实际发布在 `/faq/how-many-keys-on-a-piano/`，A 列回填用真实规范路径。
+- 结构化数据：blog = Article + FAQPage + BreadcrumbList；faq 长文 = Article + FAQPage + BreadcrumbList；canonical / meta description / keywords 齐全，作者头像统一。
+- 新增 `FAQ_ARTICLES` 数据列表 + `build_faq_article()` 生成器，支持长文 FAQ（Q&A 正文 + FAQPage），已接入 main()/sitemap/faq 索引页；不影响原有 6 条短 FAQ。
+- push 坑：git-credential-helper-selector 交互卡死 → 用 `git -c credential.helper= push` + `GIT_TERMINAL_PROMPT=0` + token 内联临时脚本解决。
+- F 列尾零坑：`+csv-put` 把 "11.20" 落成 "11.2"，改 `+cells-set --cells '[[{"value":"11.20","cell_styles":{"number_format":"@"}}]]'` 修正。
+
+
 ## 2026-11-19（3 篇，blog×2 + video×1）
 
 | slug | 类型 | 页面 URL | 表格行 | B列关键词嵌入 | 线上 | F栏 |
