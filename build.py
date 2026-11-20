@@ -8,11 +8,24 @@ URL architecture:
 """
 import os
 import json
+import hashlib
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SITE = "bigloong.net"
 AUTHOR = "Alice Baker"
 EMAIL = "contact@bigloong.net"
+
+def _asset_ver(rel):
+    """基于静态文件内容 md5 的版本号，作为 cache-busting 查询参数，避免浏览器/CDN 缓存旧样式。"""
+    p = os.path.join(ROOT, rel.lstrip("/"))
+    try:
+        with open(p, "rb") as fh:
+            return hashlib.md5(fh.read()).hexdigest()[:8]
+    except OSError:
+        return "0"
+
+CSS_VER = _asset_ver("assets/css/style.css")
+JS_VER = _asset_ver("assets/js/main.js")
 
 # ---------------------------- data ----------------------------
 
@@ -337,7 +350,7 @@ def head(title, description, jsonld="", keywords="", canonical="/", og_image="")
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/style.css?v={CSS_VER}">
 {jsonld}
 </head>
 <body>
@@ -413,7 +426,7 @@ def footer():
   <span>Questions? Email us at <a href="mailto:{EMAIL}">{EMAIL}</a>.</span>
 </div>
 </div></footer>
-<script src="/assets/js/main.js"></script>
+<script src="/assets/js/main.js?v={JS_VER}"></script>
 </body>
 </html>'''
 

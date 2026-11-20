@@ -1,5 +1,9 @@
 # bigloong.net 发布台账
 
+## 2026-11-20 补充 5：静态资源加 cache-busting 版本号修复 hero 黑字
+
+用户反馈线上首页 Bigloong 仍是纯黑字、无光标（上一轮已加紫色渐变+光标）。排查：源码 HTML 的 `hero-word` span 在、线上 CSS 含完整 `.hero-word` 紫色渐变规则，本地 headless 渲染正常 → 判定为浏览器/CDN 缓存了旧 CSS（旧版无 `.hero-word` 规则，span 继承 h1 黑色）。解决：build.py 顶部新增 `_asset_ver()` 按 CSS/JS 文件 md5 前 8 位生成版本号，`head()` 与 `footer()` 的引用改为 `style.css?v={CSS_VER}` / `main.js?v={JS_VER}`；内容一变版本号自动变，永久绕过缓存。本地截图复核：Bigloong 紫色渐变+闪烁光标正常（CSS_VER=bde302a0）。导航/正文/URL/表格不动。
+
 ## 2026-11-20 补充 4：导航栏删 Home + hero 动态紫色 Bigloong
 
 用户要求：①删除顶部导航栏 Home（logo 已可回首页，gologin 也是无 Home 项）；②首页标题第二行加紫色动态 "Bigloong"，参考 gologin（渐变词+闪烁光标）。实现：`header()` 删 Home li（全站生效）；`build_home()` 的 h1 改为两行，第二行 `<span class="hero-word">Bigloong<span class="hero-caret"></span></span>`；CSS 新增 `.hero-word`(紫色渐变 + `heroGradient` 4.5s 流动) 与 `.hero-caret`(`heroBlink` 1s 闪烁光标)，并支持 `prefers-reduced-motion`。本地 headless Chrome 截图验证：导航无 Home、Bigloong 紫色渐变+光标正常。仅改导航与 hero 呈现，正文/URL/表格不动。
