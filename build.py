@@ -440,11 +440,17 @@ def write(relpath, content):
     print("wrote", relpath)
 
 def post_card(p):
+    cover = p.get("cover_img")
+    if cover:
+        thumb = (f'<div class="post-thumb post-thumb-cover">'
+                 f'<img src="{cover}" alt="{p["title"]}" loading="lazy">'
+                 f'<span class="cat">{p["cat"]}</span></div>')
+    else:
+        thumb = (f'<div class="post-thumb" style="--c1:{p["c1"]};--c2:{p["c2"]}">'
+                 f'<span class="cat">{p["cat"]}</span>'
+                 f'<span class="thumb-emoji">{p["emoji"]}</span></div>')
     return f'''<article class="post-card">
-  <div class="post-thumb" style="--c1:{p['c1']};--c2:{p['c2']}">
-    <span class="cat">{p['cat']}</span>
-    <span class="thumb-emoji">{p['emoji']}</span>
-  </div>
+  {thumb}
   <div class="post-body">
     <h3><a href="/blog/{p['slug']}/">{p['title']}</a></h3>
     <p>{p['desc']}</p>

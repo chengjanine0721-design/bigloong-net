@@ -1,1 +1,5 @@
 .gh_token
+.workbuddy/
+# 封面图生成中间产物(原图/底图), 交付物是 cover.jpg
+assets/img/*/base.jpg
+assets/img/*/Editorial_magazine_photography_*.png
