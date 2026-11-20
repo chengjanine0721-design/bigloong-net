@@ -1,5 +1,9 @@
 # bigloong.net 发布台账
 
+## 2026-11-20 补充 2：blog 末尾 CTA 改为 Related Articles 推荐区
+
+用户要求所有 blog 末尾的 "Keep learning with Bigloong / Back to the blog" CTA band 改成 ipcook 风格的推荐文章区。`build_article()` 末尾替换为 `<section class="section section-soft">` + `section-head`(eyebrow "Keep exploring" + h2 "Related Articles") + `grid grid-3`，复用 `post_card()`（封面图+分类+标题+描述+作者头像，整卡可点，与 ipcook 案例观感一致）。新增 `related_cards(slug, n=3)`：排除自身、按当前文章位置轮转取另外 3 篇，保证每篇推荐组合不同且都是站内真实 blog 链接。重建后 5 篇各 3 卡/3 封面、推荐均 3 篇不同且不含自己，全部 OK。仅样式与内链，不改正文/关键词/URL/发布日，飞书表格无需回填。
+
 ## 2026-11-20 补充：全站 blog 首图统一为封面图
 
 用户要求所有 blog 的标题/首图/目录统一成参考页 `how-to-start-learning-piano` 的布局。核查后：5 篇均走同一 `build_article()` 模板，标题区与目录区本就一致，唯一差异是首图——2 篇已有真实封面，3 篇仍是 emoji 渐变块。已为这 3 篇补齐封面图（两步分层：ImageGen 底图 + `tools/make_cover.py` 叠字 + `--inpaint` 去水印），并把 `image`/`cover_img` 指向新 cover.jpg。

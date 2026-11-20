@@ -467,6 +467,21 @@ def post_card(p):
   </div>
 </article>'''
 
+
+def related_cards(slug, n=3):
+    """Related Articles: recommend n other blog posts, never the current one.
+
+    Rotate the slice by the current post's position so each article shows a
+    different set of recommendations (all valid internal blog links).
+    """
+    others = [p for p in POSTS if p["slug"] != slug]
+    if not others:
+        return ""
+    idx = next((i for i, p in enumerate(POSTS) if p["slug"] == slug), 0)
+    picked = [others[(idx + k) % len(others)] for k in range(min(n, len(others)))]
+    return "".join(post_card(p) for p in picked)
+
+
 # ---------------------------- pages ----------------------------
 
 def build_home():
@@ -630,11 +645,10 @@ def build_article(p):
   </aside>
 </div>
 </div></section>
-<div class="section"><div class="cta-band">
-  <h2>Keep learning with Bigloong</h2>
-  <p>Browse more step by step piano guides and tutorials.</p>
-  <div class="actions"><a href="/blog/" class="btn btn-primary">Back to the blog</a></div>
-</div></div>
+<section class="section section-soft"><div class="wrap">
+  <div class="section-head"><span class="eyebrow">Keep exploring</span><h2>Related Articles</h2></div>
+  <div class="grid grid-3">{related_cards(slug)}</div>
+</div></section>
 </main>'''
     canonical = "/blog/" + slug + "/"
     write("blog/%s/index.html" % slug,
