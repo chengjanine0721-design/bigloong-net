@@ -1,5 +1,11 @@
 # bigloong.net 发布台账
 
+## 2026-11-22 补充 18：music-theory-basics-for-piano 封面换用户提供的成品图
+
+- 用户提供成品封面 `D:/workbuddy/buddy-files/piano-blog-cover/music-theory-blog-cover-1200x800.jpg`（已含标题/署名文字，1200x800、139KB、progressive、4:4:4），直接替换 `assets/img/music-theory-basics-for-piano/cover.jpg`。
+- 路径不变，build.py 与全站引用无需改动，只替换图片文件；原图为脚本叠字生成（196KB），现换为成品图。
+- 提交后 curl 验证 cover.jpg 200。
+
 ## 2026-11-21 补发（用户 11-22 授权"全部补发"，3 篇：blog×2 + video-tutorial×1）
 
 > 11-21 因当天 WorkBuddy 客户端未在 8:00 运行，本地定时发布任务未触发，3 篇 E=11.21 且 F 空的排期漏发。11-22 用户明确授权后补发。
