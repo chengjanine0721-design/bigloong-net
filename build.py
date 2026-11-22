@@ -31,6 +31,41 @@ JS_VER = _asset_ver("assets/js/main.js")
 
 POSTS = [
     {
+        "slug": "piano-finger-exercises-for-beginners",
+        "cat": "Beginner Guide",
+        "title": "Piano Exercises for Beginners",
+        "desc": "Build control with simple piano exercises for beginners. Learn finger drills, five-finger patterns, slow scales and a short daily routine that actually sticks.",
+        "emoji": "\U0001F3B9",
+        "c1": "#FFF0C9", "c2": "#E7E5F6",
+        "date": "2026-11-22",
+        "read": "10 min read",
+        "seo_title": "Piano Exercises for Beginners: Simple Daily Drills That Work",
+        "full_h1": "Piano Exercises for Beginners (Simple Daily Drills That Work)",
+        "body_file": "_piano_exercises_body.html",
+        "image": "/assets/img/piano-finger-exercises-for-beginners/cover.jpg",
+        "cover_img": "/assets/img/piano-finger-exercises-for-beginners/cover.jpg",
+        "keywords": "piano exercises for beginners, piano practice for beginners, piano exercise, piano drills for beginners",
+        "toc": [
+            ("why-exercises", "Why Exercises Matter"),
+            ("before-you-start", "Posture and Hand Shape"),
+            ("warm-up", "The Warm-Up"),
+            ("five-finger-patterns", "Five-Finger Patterns"),
+            ("scales", "Slow Scales"),
+            ("finger-independence", "Finger Independence"),
+            ("hands-together", "Hands Together"),
+            ("rhythm", "Rhythm Variations"),
+            ("routine", "A Daily Routine"),
+            ("mistakes", "Common Mistakes"),
+            ("faq", "FAQ"),
+            ("conclusion", "Start Small"),
+        ],
+        "faqs": [
+            ("How long should a beginner practise piano each day", "Ten to twenty minutes of focused daily practice is a great start. Short, regular piano exercises for beginners build technique faster than one long session a week, because the brain consolidates the movement between sessions."),
+            ("Do I need a teacher to do these exercises correctly", "No, these drills are safe to do on your own if you stay relaxed and stop when you feel strain. A teacher is still valuable for catching small posture issues early, but a careful self-taught player can make steady progress with them."),
+            ("How soon will I see results from finger exercises", "Most beginners notice smoother, more even fingers within two to three weeks of short daily practice. Stronger independence in the weak fingers takes a little longer, so be patient and keep the sessions consistent."),
+        ],
+    },
+    {
         "slug": "how-to-play-chords-on-piano",
         "cat": "Beginner Guide",
         "title": "How to Play Chords on Piano",
@@ -226,6 +261,31 @@ FAQS = [
 
 # Rich FAQ articles (Q&A structure + Article/FAQPage/BreadcrumbList schema)
 FAQ_ARTICLES = [
+    {
+        "slug": "is-piano-a-string-instrument",
+        "title": "Is the Piano a String Instrument?",
+        "desc": "Is the piano a string or percussion instrument? Learn how a piano makes sound, which family it belongs to and why both labels are technically correct.",
+        "full_h1": "Is the Piano a String Instrument? (String, Percussion or Both?)",
+        "seo_title": "Is the Piano a String Instrument? String or Percussion Explained",
+        "body_file": "_is_piano_string_body.html",
+        "keywords": "is piano a string instrument, is piano a percussion or string instrument, is piano a stringed instrument, what family of instruments does the piano belong to",
+        "date": "2026-11-22",
+        "read": "7 min read",
+        "toc": [
+            ("short-answer", "A String Instrument?"),
+            ("how-it-works", "How It Makes Sound"),
+            ("percussion", "Percussion or String?"),
+            ("family", "Which Family?"),
+            ("digital", "Digital Pianos"),
+            ("faq", "FAQ"),
+            ("conclusion", "Bottom Line"),
+        ],
+        "faqs": [
+            ("Is the piano a percussion instrument", "Partly. A felt hammer strikes the strings, so the piano produces sound by percussion. That is why it is sometimes grouped with percussion instruments. But because the vibrating source is a string, most formal classifications still call it a string instrument overall."),
+            ("Why is the piano in the string section of an orchestra", "Because its notes come from vibrating strings, the same as violins and cellos. In orchestral writing the piano is treated as a string-toned instrument and is often listed in the string section, even though it is played from a keyboard."),
+            ("Is a piano a stringed instrument like a guitar", "It is a stringed instrument in the sense that strings create the sound, but it is not played like a guitar. Guitar strings are plucked with the fingers or a pick, while piano strings are struck by hammers controlled from a keyboard. Both belong to the string family."),
+        ],
+    },
     {
         "slug": "how-many-keys-on-a-piano",
         "title": "How Many Keys Are on a Piano?",
