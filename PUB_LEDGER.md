@@ -4,11 +4,13 @@
 
 > 11-21 因当天 WorkBuddy 客户端未在 8:00 运行，本地定时发布任务未触发，3 篇 E=11.21 且 F 空的排期漏发。11-22 用户明确授权后补发。
 
-| slug | 类型 | 页面 URL | 表格行 | B列关键词嵌入 | 封面图 |
-|---|---|---|---|---|---|
-| how-to-tune-a-piano-yourself-basic-guide | blog | /blog/how-to-tune-a-piano-yourself-basic-guide/ | MGo4JP 第8行 | "how to tune a piano yourself basic guide" 自然嵌入标题/H1/正文/FAQ | ✅ ImageGen底图+脚本叠字，1200x800/182.2KB，去水印，size_ok/bytes_ok=True |
-| music-theory-basics-for-piano | blog | /blog/music-theory-basics-for-piano/ | MGo4JP 第9行 | 9 个成人学琴关键词+music theory basics for piano 全部自然嵌入正文/FAQ | ✅ 1200x800/192.3KB，去水印，PASS |
-| how-to-play-happy-birthday-on-piano | video-tutorial | /video-tutorial/how-to-play-happy-birthday-on-piano/ | MGo4JP 第73行 | "how to play on piano happy birthday" 嵌入 desc/steps | — (video 用 steps 教学，无封面图) |
+| slug | 类型 | 页面 URL | 表格行 | B列关键词嵌入 | 状态码 | F栏回填 | A栏URL回填 | 封面图 |
+|---|---|---|---|---|---|---|---|---|
+| how-to-tune-a-piano-yourself-basic-guide | blog | /blog/how-to-tune-a-piano-yourself-basic-guide/ | MGo4JP 第8行 | "how to tune a piano yourself basic guide" 自然嵌入标题/H1/正文/FAQ | ✅ 200 | ✅ 11.22 | ✅ 完整URL | ✅ ImageGen底图+脚本叠字，1200x800/182.2KB，去水印，size_ok/bytes_ok=True |
+| music-theory-basics-for-piano | blog | /blog/music-theory-basics-for-piano/ | MGo4JP 第9行 | 9 个成人学琴关键词+music theory basics for piano 全部自然嵌入正文/FAQ | ✅ 200 | ✅ 11.22 | ✅ 完整URL | ✅ 1200x800/192.3KB，去水印，PASS |
+| how-to-play-happy-birthday-on-piano | video-tutorial | /video-tutorial/how-to-play-happy-birthday-on-piano/ | MGo4JP 第73行 | "how to play on piano happy birthday" 嵌入 desc/steps | ✅ 200 | ✅ 11.22 | ✅ 完整URL | — (video 用 steps 教学，无封面图) |
+
+**发布状态：✅ 已全部上线。** push `280810e..c8fcf49`（commit c8fcf49），Cloudflare 部署完成，3 个页面 URL + 2 张封面图 + sitemap 线上核验均 200。F8/F9/F73 回填 11.22，A8/A9/A73 替换为完整 https URL 并读回核对。飞书通知：bot 身份推送 URL 清单给 open_id `ou_f03eaff539ac11b035b93197e723ef45`（message_id om_x100b7f1e177cd4a4de07222d96e3453）。
 
 **说明**
 - happy-birthday 篇 A 列原写 `/blog/how-to-play-happy-birthday-on-piano`，按 G=video-tutorial 规范实际发布在 `/video-tutorial/`，A 列回填用真实路径。
