@@ -545,7 +545,17 @@ def write(relpath, content):
         f.write(content)
     print("wrote", relpath)
 
-def post_card(p):
+_MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+           "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+
+
+def fmt_date(iso):
+    """2026-11-22 -> Nov 22, 2026"""
+    y, m, d = iso.split("-")
+    return f"{_MONTHS[int(m) - 1]} {int(d)}, {y}"
+
+
+def post_card(p, show_date=False):
     cover = p.get("cover_img")
     if cover:
         thumb = (f'<div class="post-thumb post-thumb-cover">'
@@ -555,6 +565,8 @@ def post_card(p):
         thumb = (f'<div class="post-thumb" style="--c1:{p["c1"]};--c2:{p["c2"]}">'
                  f'<span class="cat">{p["cat"]}</span>'
                  f'<span class="thumb-emoji">{p["emoji"]}</span></div>')
+    date_html = (f'<time class="post-date" datetime="{p["date"]}">{fmt_date(p["date"])}</time>'
+                 if show_date else "")
     return f'''<article class="post-card">
   {thumb}
   <div class="post-body">
@@ -565,6 +577,7 @@ def post_card(p):
       <span>{AUTHOR}</span>
       <span>&middot;</span>
       <span>{p['read']}</span>
+      {date_html}
     </div>
     <a class="read-link" href="/blog/{p['slug']}/">Read guide <span class="arrow">&rarr;</span></a>
   </div>
@@ -679,7 +692,7 @@ def build_home():
         body, active="home", keywords="piano guides, learn piano, piano for beginners, piano tutorials, Bigloong"))
 
 def build_blog():
-    cards = "".join(post_card(p) for p in POSTS)
+    cards = "".join(post_card(p, show_date=True) for p in POSTS)
     body = f'''<main>
 <section class="page-intro"><div class="wrap">
   <span class="eyebrow">The blog</span>

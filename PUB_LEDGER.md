@@ -1,5 +1,11 @@
 # bigloong.net 发布台账
 
+## 2026-11-22 补充 17：blog 列表卡增加发布日期
+
+- /blog/ 列表页每张卡的作者行右侧增加发布日期（`<time>` 标签，如 Nov 22, 2026），日期取各 POST 的 `date` 字段。
+- 只影响 blog 列表页（post_card 新增 `show_date` 开关，仅 build_blog 传 True）；首页前3篇、相关文章推荐卡不显示日期。
+- CSS 加 `.post-meta .post-date{margin-left:auto;white-space:nowrap}` 靠右。6篇 blog 均有日期，首页 0 个。
+
 ## 2026-11-20 补充 16：其余4个视频页封面也换真实图
 
 - 用户给出4条对应关系，把剩余4个视频卡片的 emoji 缩略图换成真实封面。
@@ -93,6 +99,22 @@
 | how-to-read-sheet-music-piano | 渐变🎴 → cover.jpg（乐谱底图） | 1200x800 / 171.4KB / q90 4:4:4 / PASS |
 
 重建后 5 篇详情页首图全部为 `article-cover-img`，blog 集合页 5 张卡片封面图齐全。仅样式统一，未改正文/关键词/URL/发布日，飞书表格无需回填。
+
+## 2026-11-22（2 篇，blog×1 + faq×1）
+
+| slug | 类型 | 页面 URL | 表格行 | B列关键词嵌入 | 状态码 | F栏回填 | A栏URL回填 | 封面图 |
+|---|---|---|---|---|---|---|---|---|
+| piano-finger-exercises-for-beginners | blog | /blog/piano-finger-exercises-for-beginners/ | MGo4JP 第10行 | 4/4 全部自然嵌入 | ✅ 200 | ✅ 11.22 | ✅ 完整URL | ✅ cover.jpg 已生成（ImageGen底图+脚本叠字，1200x800/152.2KB，去水印，size_ok/bytes_ok=True） |
+| is-piano-a-string-instrument | faq（长文FAQ） | /faq/is-piano-a-string-instrument/ | MGo4JP 第44行 | 4/4 全部自然嵌入 | ✅ 200 | ✅ 11.22 | ✅ 完整URL | — (faq 不需要封面) |
+
+**发布状态：✅ 已全部上线。** push `801cfbb..555288a`（commit 555288a），Cloudflare 部署完成，2 个页面 URL + 封面图 + sitemap 线上核验均 200。F10/F44 已回填 11.22（cells-set 保尾零），A10/A44 已替换为完整 https URL 并读回核对。飞书通知：bot 身份推送 URL 清单给 open_id `ou_f03eaff539ac11b035b93197e723ef45`。
+
+**说明**
+- faq 篇 A 列原写 `/blog/is-piano-a-string-instrument`，按文档第 2 节规范（G=faq）实际发布在 `/faq/is-piano-a-string-instrument/`，A 列回填用真实规范路径。
+- 两行均无 URL 为空的补充关键词行，各自关键词全部来自本行 B 列。
+- 结构化数据：blog = Article + FAQPage + BreadcrumbList；faq 长文 = Article + FAQPage + BreadcrumbList；canonical / meta description / keywords 齐全，作者头像统一。
+- 封面底图右下角带 "AI生成/WORK BUDDY" 水印，make_cover.py `--inpaint 1050,720,1200,800` 已擦除，目检文字清晰无截断。
+
 
 ## 2026-11-20（2 篇，blog×1 + faq×1）
 
