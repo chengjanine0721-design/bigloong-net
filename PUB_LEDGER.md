@@ -1,5 +1,21 @@
 # bigloong.net 发布台账
 
+## 2026-11-21 补发（用户 11-22 授权"全部补发"，3 篇：blog×2 + video-tutorial×1）
+
+> 11-21 因当天 WorkBuddy 客户端未在 8:00 运行，本地定时发布任务未触发，3 篇 E=11.21 且 F 空的排期漏发。11-22 用户明确授权后补发。
+
+| slug | 类型 | 页面 URL | 表格行 | B列关键词嵌入 | 封面图 |
+|---|---|---|---|---|---|
+| how-to-tune-a-piano-yourself-basic-guide | blog | /blog/how-to-tune-a-piano-yourself-basic-guide/ | MGo4JP 第8行 | "how to tune a piano yourself basic guide" 自然嵌入标题/H1/正文/FAQ | ✅ ImageGen底图+脚本叠字，1200x800/182.2KB，去水印，size_ok/bytes_ok=True |
+| music-theory-basics-for-piano | blog | /blog/music-theory-basics-for-piano/ | MGo4JP 第9行 | 9 个成人学琴关键词+music theory basics for piano 全部自然嵌入正文/FAQ | ✅ 1200x800/192.3KB，去水印，PASS |
+| how-to-play-happy-birthday-on-piano | video-tutorial | /video-tutorial/how-to-play-happy-birthday-on-piano/ | MGo4JP 第73行 | "how to play on piano happy birthday" 嵌入 desc/steps | — (video 用 steps 教学，无封面图) |
+
+**说明**
+- happy-birthday 篇 A 列原写 `/blog/how-to-play-happy-birthday-on-piano`，按 G=video-tutorial 规范实际发布在 `/video-tutorial/`，A 列回填用真实路径。
+- music-theory 篇表格 G 列为空、A 列写 `/blog/music-theory-basics-for-piano`，按 blog 发布。
+- 两篇 blog date 字段写 2026-11-21（原计划日），F 栏回填实际补发日 11.22；结构化数据 Article + FAQPage + BreadcrumbList，video 篇 VideoObject。
+- 受众日期字段与 F 栏差异属补发留痕，非错误。
+
 ## 2026-11-22 补充 17：blog 列表卡增加发布日期
 
 - /blog/ 列表页每张卡的作者行右侧增加发布日期（`<time>` 标签，如 Nov 22, 2026），日期取各 POST 的 `date` 字段。
