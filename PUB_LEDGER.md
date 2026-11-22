@@ -4,7 +4,9 @@
 
 - 用户提供成品封面 `D:/workbuddy/buddy-files/piano-blog-cover/music-theory-blog-cover-1200x800.jpg`（已含标题/署名文字，1200x800、139KB、progressive、4:4:4），直接替换 `assets/img/music-theory-basics-for-piano/cover.jpg`。
 - 路径不变，build.py 与全站引用无需改动，只替换图片文件；原图为脚本叠字生成（196KB），现换为成品图。
-- 提交后 curl 验证 cover.jpg 200。
+- 提交 `caee616` 后用户反馈"没看到更新"：根因是图片 URL 无版本号、Cloudflare `max-age=14400` 缓存旧图（线上文件其实已是新图，MD5 比对一致）。
+- 修复：build.py 新增 `img_ver()`（复用 `_asset_ver` 的 md5 前8位），给 og:image / 结构化数据 image / 文章封面块 / blog 卡片 / 视频卡片的所有图片引用加 `?v=<md5>`；图片内容变 → URL 变 → 永久绕过缓存。与既有 CSS_VER/JS_VER 缓存方案一致。
+- 新图 md5 前8位 `3783d6f4`，全站 17 个页面 HTML -img src 同步带版本号。提交 `待推送`。
 
 ## 2026-11-21 补发（用户 11-22 授权"全部补发"，3 篇：blog×2 + video-tutorial×1）
 

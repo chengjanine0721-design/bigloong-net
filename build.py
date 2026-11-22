@@ -27,6 +27,18 @@ def _asset_ver(rel):
 CSS_VER = _asset_ver("assets/css/style.css")
 JS_VER = _asset_ver("assets/js/main.js")
 
+def img_ver(url):
+    """给图片 URL 加基于文件内容的 md5 版本号，换图后 URL 随之改变，彻底绕过浏览器/CDN 缓存。"""
+    if not url:
+        return url
+    site_prefix = "https://" + SITE
+    if url.startswith(site_prefix) and url[len(site_prefix):].startswith("/assets/"):
+        path = url[len(site_prefix):]
+        return site_prefix + path + "?v=" + _asset_ver(path)
+    if url.startswith("/assets/"):
+        return url + "?v=" + _asset_ver(url)
+    return url
+
 # ---------------------------- data ----------------------------
 
 POSTS = [
@@ -503,7 +515,7 @@ VIDEOS = [
 
 def head(title, description, jsonld="", keywords="", canonical="/", og_image=""):
     kw = ('<meta name="keywords" content="%s">' % keywords) if keywords else ""
-    ogimg = ('<meta property="og:image" content="https://%s%s">' % (SITE, og_image)) if og_image else ""
+    ogimg = ('<meta property="og:image" content="%s">' % img_ver("https://" + SITE + og_image)) if og_image else ""
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -640,7 +652,7 @@ def post_card(p, show_date=False):
     cover = p.get("cover_img")
     if cover:
         thumb = (f'<div class="post-thumb post-thumb-cover">'
-                 f'<img src="{cover}" alt="{p["title"]}" loading="lazy">'
+                 f'<img src="{img_ver(cover)}" alt="{p["title"]}" loading="lazy">'
                  f'<span class="cat">{p["cat"]}</span></div>')
     else:
         thumb = (f'<div class="post-thumb" style="--c1:{p["c1"]};--c2:{p["c2"]}">'
@@ -805,7 +817,7 @@ def build_article(p):
         "author": {"@type": "Person", "name": AUTHOR, "image": "https://" + SITE + "/assets/img/author-avatar.png"},
         "publisher": {"@type": "Organization", "name": "Bigloong"},
         "datePublished": p["date"], "dateModified": p["date"],
-        "image": "https://" + SITE + p["image"],
+        "image": img_ver("https://" + SITE + p["image"]),
         "mainEntityOfPage": "https://" + SITE + "/blog/" + slug + "/"
     }
     faq_ld = {"@context": "https://schema.org", "@type": "FAQPage",
@@ -818,8 +830,8 @@ def build_article(p):
     ld += crumb_ld
     cover = p.get("cover_img")
     if cover:
-        cover_block = (f'<a class="article-cover article-cover-img" href="{cover}" target="_blank" rel="noopener">'
-                       f'<img src="{cover}" alt="{p["title"]}" loading="eager"></a>')
+        cover_block = (f'<a class="article-cover article-cover-img" href="{img_ver(cover)}" target="_blank" rel="noopener">'
+                       f'<img src="{img_ver(cover)}" alt="{p["title"]}" loading="eager"></a>')
     else:
         cover_block = (f'<div class="article-cover" style="background:linear-gradient(145deg,{p["c1"]},{p["c2"]})">'
                        f'{p["emoji"]}</div>')
@@ -1017,7 +1029,7 @@ def build_faq_article(f):
 def video_thumb(v):
     if v.get("cover_img"):
         return (f'<div class="post-thumb post-thumb-cover">'
-                f'<img src="{v["cover_img"]}" alt="{v["title"]}" loading="lazy">'
+                f'<img src="{img_ver(v["cover_img"])}" alt="{v["title"]}" loading="lazy">'
                 f'<span class="cat">Video</span>'
                 f'<span class="dur-badge">{v["duration"]}</span></div>')
     return (f'<div class="post-thumb" style="--c1:{v["c1"]};--c2:{v["c2"]}">'
