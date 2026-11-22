@@ -1,5 +1,14 @@
 # bigloong.net 发布台账
 
+## 2026-11-22 补充 19：sitemap.xml 新增 lastmod + priority
+
+- 用户要求：sitemap 每条 URL 增加 `lastmod`（页面首次发布时间，锁定不变）和 `priority`；网页显示发布时间可单独改、不影响 lastmod。
+- 实现：build.py 新增写死的 `FIRST_PUBLISHED` 字典（30 个路径→首次上线日 W3C 格式），`build_sitemap()` 每条 URL 输出 `<lastmod>` + `<priority>`。lastmod 只读该字典，与网页显示日期（各条目 `date` 字段）完全解耦——改网页日期不动 lastmod。
+- 首次发布日口径：取各页面 git 首次入库/上线日（`git log --diff-filter=A`），与台账发布记录一致。补发的 3 篇（tune/theory/happy-birthday）填实际上线日 11-22，非 date 字段的计划日 11-21；how-much-does-a-piano-cost 11-19、how-to-play-chords 11-20、how-many-keys 11-20、is-piano-a-string 11-22；其余存量 11-19。
+- priority 规则：首页 1.0、列表页(/blog/ /faq/ /video-tutorial/) 0.8、详情页 0.6、信息页(about/privacy/contact/terms) 0.4。
+- 校验：XML 解析通过，30 条 URL 全部含 lastmod+priority，无缺失。
+- 同步更新每日发布自动化：第 5b 步要求新增文章时在 FIRST_PUBLISHED 加一行（否则 lastmod 回落默认值）。提交 `待推送`。
+
 ## 2026-11-22 补充 18：music-theory-basics-for-piano 封面换用户提供的成品图
 
 - 用户提供成品封面 `D:/workbuddy/buddy-files/piano-blog-cover/music-theory-blog-cover-1200x800.jpg`（已含标题/署名文字，1200x800、139KB、progressive、4:4:4），直接替换 `assets/img/music-theory-basics-for-piano/cover.jpg`。

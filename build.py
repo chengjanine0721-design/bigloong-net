@@ -1270,13 +1270,59 @@ def build_404():
 </main>'''
     write("404.html", page("Page not found | Bigloong", "The page you requested could not be found.", body))
 
+# 页面首次发布日期（W3C 日期），取自 git 首次入库/上线日，写死后不再随正文修改而变。
+# 与网页上显示的发布时间（各条目的 date 字段，可改）完全解耦：改网页日期不影响 sitemap lastmod。
+FIRST_PUBLISHED = {
+    "/": "2026-11-19", "/blog/": "2026-11-19", "/faq/": "2026-11-19", "/video-tutorial/": "2026-11-19",
+    "/about-us/": "2026-11-19", "/privacy/": "2026-11-19", "/contact-us/": "2026-11-19", "/terms/": "2026-11-19",
+    # blog
+    "/blog/how-to-tune-a-piano-yourself-basic-guide/": "2026-11-22",
+    "/blog/music-theory-basics-for-piano/": "2026-11-22",
+    "/blog/piano-finger-exercises-for-beginners/": "2026-11-22",
+    "/blog/how-to-play-chords-on-piano/": "2026-11-20",
+    "/blog/how-much-does-a-piano-cost/": "2026-11-19",
+    "/blog/how-to-start-learning-piano/": "2026-11-19",
+    "/blog/how-to-improve-piano-finger-speed-and-dexterity/": "2026-11-19",
+    "/blog/how-to-read-sheet-music-piano/": "2026-11-19",
+    # faq (short)
+    "/faq/how-often-should-i-tune-a-piano/": "2026-11-19",
+    "/faq/digital-or-acoustic-piano-for-beginners/": "2026-11-19",
+    "/faq/how-long-does-it-take-to-learn-piano/": "2026-11-19",
+    "/faq/best-age-to-start-piano-lessons/": "2026-11-19",
+    "/faq/do-i-need-a-piano-teacher/": "2026-11-19",
+    "/faq/what-is-the-80-20-rule-for-piano/": "2026-11-19",
+    # faq (article)
+    "/faq/is-piano-a-string-instrument/": "2026-11-22",
+    "/faq/how-many-keys-on-a-piano/": "2026-11-20",
+    # video-tutorial
+    "/video-tutorial/piano-posture-for-beginners/": "2026-11-19",
+    "/video-tutorial/finding-middle-c-on-piano/": "2026-11-19",
+    "/video-tutorial/first-piano-song-tutorial/": "2026-11-19",
+    "/video-tutorial/piano-scales-for-beginners/": "2026-11-19",
+    "/video-tutorial/how-to-play-twinkle-twinkle-little-star-on-the-piano/": "2026-11-19",
+    "/video-tutorial/how-to-play-happy-birthday-on-piano/": "2026-11-22",
+}
+
+def _sitemap_priority(u):
+    if u == "/":
+        return "1.0"
+    if u in ("/blog/", "/faq/", "/video-tutorial/"):
+        return "0.8"
+    if u.startswith(("/blog/", "/faq/", "/video-tutorial/")):
+        return "0.6"
+    return "0.4"  # about / privacy / contact / terms 等信息页
+
 def build_sitemap():
     urls = ["/", "/blog/", "/faq/", "/video-tutorial/", "/about-us/", "/privacy/", "/contact-us/", "/terms/"]
     urls += ["/blog/%s/" % p["slug"] for p in POSTS]
     urls += ["/faq/%s/" % f["slug"] for f in FAQS]
     urls += ["/faq/%s/" % f["slug"] for f in FAQ_ARTICLES]
     urls += ["/video-tutorial/%s/" % v["slug"] for v in VIDEOS]
-    entries = "".join(f"  <url><loc>https://{SITE}{u}</loc></url>\n" for u in urls)
+    entries = "".join(
+        f"  <url><loc>https://{SITE}{u}</loc><lastmod>{FIRST_PUBLISHED.get(u, '2026-11-19')}</lastmod>"
+        f"<priority>{_sitemap_priority(u)}</priority></url>\n"
+        for u in urls
+    )
     xml = f'''<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 {entries}</urlset>
