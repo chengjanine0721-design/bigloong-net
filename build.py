@@ -301,6 +301,67 @@ POSTS = [
             ("How long does it take to read sheet music", "You can recognise the basic notes in a couple of weeks of short daily practice. Becoming a fluent, sight reading pianist takes months or years, but the early gains come quickly."),
         ],
     },
+    {
+        "slug": "do-you-need-88-keys-on-a-piano",
+        "cat": "Buying Guide",
+        "title": "Do You Need 88 Keys on a Piano?",
+        "desc": "A practical guide to keyboard size, from 61 keys to a full 88-key instrument, and which one fits your goals, space and budget as a piano learner.",
+        "emoji": "\U0001F3B9",
+        "c1": "#FFF0C9", "c2": "#E7E5F6",
+        "date": "2026-11-23",
+        "read": "9 min read",
+        "seo_title": "Do You Need 88 Keys on a Piano? 61 vs 76 vs 88 Explained",
+        "full_h1": "Do You Need 88 Keys on a Piano? (61 vs 76 vs 88 Keys)",
+        "body_file": "_do_you_need_88_body.html",
+        "image": "/assets/img/do-you-need-88-keys-on-a-piano/cover.jpg",
+        "cover_img": "/assets/img/do-you-need-88-keys-on-a-piano/cover.jpg",
+        "keywords": "do you need 88 keys on a piano, do i need 88 keys, 88 keys vs 61 keys, is 61 keys enough, piano keyboard size guide, how many keys do i need",
+        "toc": [
+            ("what-88-keys-means", "What 88 Keys Give You"),
+            ("keyboard-sizes", "61, 76 and 88 Keys Compared"),
+            ("weighted-keys", "Weight and Key Action"),
+            ("who-needs-88", "Who Should Choose 88 Keys"),
+            ("who-can-wait", "Who Can Wait"),
+            ("faq", "FAQ"),
+            ("conclusion", "The Bottom Line"),
+        ],
+        "faqs": [
+            ("Is 61 keys enough to learn piano", "Yes. For the first one to two years, 61 keys cover beginner pieces, scales, chords and most popular songs. Upgrade to 88 keys only when the music you want to play needs notes outside that range."),
+            ("Is an 88 key piano better for beginners", "It is not automatically better, but it is more complete. The extra range and weighted action prepare you for any style of music and avoid an upgrade later. Choose it if your budget and space allow."),
+            ("Can I get 88 keys in a portable keyboard", "Yes. Many stage pianos and folding keyboards offer a full 88 key weighted action in a portable package, giving you the full range without needing a permanent space."),
+        ],
+    },
+    {
+        "slug": "how-much-do-piano-lessons-cost",
+        "cat": "Buying Guide",
+        "title": "How Much Do Piano Lessons Cost?",
+        "desc": "Understand private and group lesson rates, package deals, and what you really get for your money when budgeting for piano lessons.",
+        "emoji": "\U0001F3B9",
+        "c1": "#FFF0C9", "c2": "#E7E5F6",
+        "date": "2026-11-23",
+        "read": "11 min read",
+        "seo_title": "How Much Do Piano Lessons Cost? 2026 Rates & Price Guide",
+        "full_h1": "How Much Do Piano Lessons Cost? (2026 Price Guide)",
+        "body_file": "_piano_lessons_cost_body.html",
+        "image": "/assets/img/how-much-do-piano-lessons-cost/cover.jpg",
+        "cover_img": "/assets/img/how-much-do-piano-lessons-cost/cover.jpg",
+        "keywords": "how much are piano lessons, how much do piano lessons cost, average cost of piano lessons, piano lesson rates, piano private lessons rates, how much are piano lessons for kids, fees for piano lessons, piano classes cost",
+        "toc": [
+            ("average-cost", "Average Lesson Cost"),
+            ("what-affects-rates", "What Affects Rates"),
+            ("kids-lessons", "Lessons for Kids"),
+            ("private-rates", "Private vs Group"),
+            ("hidden-costs", "Hidden Costs"),
+            ("save-money", "How to Save"),
+            ("faq", "FAQ"),
+            ("conclusion", "The Bottom Line"),
+        ],
+        "faqs": [
+            ("What is the average cost of piano lessons", "In the United States the average is about $50 for a 30 minute private lesson, with most teachers charging between $30 and $80. Group classes average $15 to $35 per person."),
+            ("How much does it cost for piano lessons for a full year", "A weekly 30 minute private lesson at $50 per session comes to roughly $1,500 to $1,800 for a 36 week year. Group lessons can reduce that to $600 to $1,200."),
+            ("Are piano lessons worth the cost", "For most learners, yes. A good teacher corrects technique early, prevents bad habits and keeps you motivated, which speeds progress and reduces frustration."),
+        ],
+    },
 ]
 
 FAQS = [
@@ -507,6 +568,27 @@ VIDEOS = [
             "Use fingers 1 1 2 1 4 3 for the opening phrase. Relax the hand between notes and let the thumb stay loose.",
             "Once the melody is comfortable, add a simple left hand chord under the start of each line: B flat major, then F major.",
             "Practise hands together at a slow tempo with a steady count, then increase speed only when the notes and chords feel even.",
+        ],
+    },
+    {
+        "slug": "how-to-play-erika-on-piano",
+        "title": "How to Play Erika on Piano",
+        "desc": "Learn how to play Erika on piano with a simple melody in the right hand, easy left hand chords and a steady march-like rhythm, ideal for beginners.",
+        "keywords": "how to play erika on piano, erika piano tutorial, erika piano notes, erika piano easy, learn erika piano",
+        "duration": "6:30",
+        "emoji": "\U0001F3B9",
+        "c1": "#FFF0C9", "c2": "#E7E5F6",
+        "steps": [
+            "Erika uses a simple three-chord pattern. In G major the main chords are G (G B D), C (C E G) and D (D F sharp A). Find each shape and practise moving between them with your left hand.",
+            "Learn the right hand melody in small phrases. The opening notes are C, then D E E E A A, so place your right thumb on C and use fingers 1 2 3 for the stepwise movement.",
+            "Break the tune into two bar chunks and repeat each one slowly until the notes feel automatic before joining the next phrase.",
+            "Add a simple left hand by playing the root note of each chord on the first beat of the bar: G, C and D. Keep it low and steady under the melody.",
+            "Practise the melody and bass hands separately first. Once each is comfortable, put them together at a slow tempo with a metronome.",
+            "Keep an even, march-like rhythm and a firm but relaxed touch. Increase the speed only when the notes and chord changes are clean and even.",
+        ],
+        "embeds": [
+            {"id": "pXj-V8W9p1M", "label": "Erika Piano (Easy Version)",
+             "desc": "A short, easy-to-follow piano version you can play along with.", "ratio": "9/16"},
         ],
     },
 ]
@@ -1168,7 +1250,8 @@ def build_video_detail(v):
     canonical = "/video-tutorial/" + slug + "/"
     write("video-tutorial/%s/index.html" % slug,
           page(v["title"] + " | Bigloong Video Tutorial", v["desc"], body, active="video",
-               crumbs=crumbs, jsonld=ld, canonical=canonical))
+               crumbs=crumbs, jsonld=ld, keywords=v.get("keywords", ""), canonical=canonical,
+               og_image=v.get("cover_img", "")))
 
 def build_simple(rel, title, intro, sections, active="more", canonical=None, dirname=None):
     body_sections = ""
@@ -1301,6 +1384,10 @@ FIRST_PUBLISHED = {
     "/video-tutorial/piano-scales-for-beginners/": "2026-11-19",
     "/video-tutorial/how-to-play-twinkle-twinkle-little-star-on-the-piano/": "2026-11-19",
     "/video-tutorial/how-to-play-happy-birthday-on-piano/": "2026-11-22",
+    # 2026-11-23 batch
+    "/blog/do-you-need-88-keys-on-a-piano/": "2026-11-23",
+    "/blog/how-much-do-piano-lessons-cost/": "2026-11-23",
+    "/video-tutorial/how-to-play-erika-on-piano/": "2026-11-23",
 }
 
 def _sitemap_priority(u):
