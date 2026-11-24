@@ -187,3 +187,31 @@
 - 已更新 blog/index.html、video-tutorial/index.html、首页、sitemap.xml。
 - **凭证**：复用之前推送脚本 `push_author_avatar.sh` 内嵌 token（尾号 ajizXW，验证有 push/admin 权限），存入站点 `.gh_token`（已加入 .gitignore）。另两枚：尾号 KVAn4I 也有效，尾号 diOS4N 已失效。
 - **F 栏回填**：验证线上 200 后用 lark-cli sheets +csv-put 写入，按 [row=N] 真实行号写 F5/F6/F72 = 11.19，revision 389/390。此后每日任务同样从 `.gh_token` 读取凭证。
+
+## 2026-11-23（3 篇，blog×2 + video×1）
+
+| slug | 类型 | 嵌入关键词（B列） | 状态码 | F栏 | A栏URL | 封面图 |
+|---|---|---|---|---|---|---|
+| do-you-need-88-keys-on-a-piano | blog | B列空，按 slug/参考页提炼 do you need 88 keys on a piano 等 | 200 | 11.23 ✓ | 完整URL ✓ | cover.jpg 已生成并叠字（158.7KB, inpaint去水印） |
+| how-much-do-piano-lessons-cost | blog | how much are/do piano lessons cost, piano lesson rates, lessons for kids 等11个 | 200 | 11.23 ✓ | 完整URL ✓ | cover.jpg 已生成并叠字（155.3KB, inpaint去水印） |
+| how-to-play-erika-on-piano | video-tutorial | how to play erika on piano（及教程长尾） | 200 | 11.23 ✓ | 完整URL ✓ | 不需要（video 类型） |
+
+- **筛表**：MGo4JP 中 E=11.23 且 F 空的主行 = 第11行(blog) + 第12行(blog) + 第74行(video-tutorial)，无补充关键词行。
+- **重要修正**：第12行 A 列原写 `how-much-does-a-piano-cost`，但该 slug 是 11.19 已上线的钢琴价格存量页，且第12行 B 列关键词实为「钢琴课程费用」（与第13行 11.24 钢琴价格才是同主题）。为避免覆盖存量页，改用新 slug `how-much-do-piano-lessons-cost`，A 栏回填真实完整 URL。
+- 第11行 B 列关键词为空，按 slug 与参考页(pianoin21days.com) 主题撰写；第74行 G 列为 video-tutorial 但 A 列误写 /blog/，按规范回填真实 /video-tutorial/ 路径。
+- **push**：卡顿时用空 commit b54ca99 触发重建；首个内容 commit 11b439c。GitHub main 三页+封面齐全。Cloudflare 构建队列拥堵约 12 分钟后部署生效（check-run API 状态滞后，实际页面先 200）。
+- **验证**：3 个 URL + 2 个 cover.jpg + sitemap 均 200；sitemap 含 3 条 lastmod=2026-11-23。
+- **回填**：F11/F12/F74=11.23（cells-set 带 number_format @ 保尾零），A11/A12/A74=完整 URL（csv-put），均已读回核对。
+- **增强**：build_video_detail 的 page() 补传 keywords + og:image，全站 video 页现均有 keywords meta 与封面 og:image。
+
+## 2026-11-24（2 篇，blog×1存量确认 + faq×1新建）
+
+| slug | 类型 | 嵌入关键词（B列） | 状态码 | F栏 | A栏URL | 封面图 |
+|---|---|---|---|---|---|---|
+| how-much-does-a-piano-cost | blog | how much does a piano cost, piano price, how much does a new piano cost, average piano cost, how much for a piano, cost of a piano, piano pricing（7个，正文已自然覆盖，meta keywords 已补全） | 200 | 11.24 ✓ | 完整URL ✓ | cover.jpg 存量已生成（159KB），今日无需重做 |
+| are-kawai-pianos-good | faq | kawai piano price, kawai k300, kawai vs yamaha, kawai digital piano, kawai upright piano, best kawai digital piano for beginners（6个） | 待验证 | 待回填 | 待回填 | 不需要（faq 类型） |
+
+- **筛表**：MGo4JP 中 E=11.24 且 F 空的主行 = 第13行(blog) + 第45行(faq)，无补充关键词行。
+- **重要判定**：第13行 A 列 `how-much-does-a-piano-cost` 是 11.19 已上线的存量页（FIRST_PUBLISHED=2026-11-19），B 列关键词就是钢琴价格，与现有正文完全同主题。按「不删除已上线页面」边界，保留正文与封面不覆盖，仅补全 keywords meta、验证 200 后回填 F/A，lastmod 保持 11-19 不变。
+- **第45行修正**：A 列误写 `/blog/are-kawai-pianos-good`，G 列为 faq，按规范落地为 `/faq/are-kawai-pianos-good/`，A 栏回填真实 /faq/ 完整 URL。
+- **正文**：新建 `_are_kawai_pianos_good_body.html`，FAQ 型问答结构 + FAQPage + Article + BreadcrumbList schema，canonical/meta/keywords 齐全，作者 Alice Baker；参考 H 列两篇 Kawai 评测（Summerhays、Mark Goodwin 2026）。

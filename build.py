@@ -189,7 +189,7 @@ POSTS = [
         "body_file": "_piano_cost_body.html",
         "image": "/assets/img/how-much-does-a-piano-cost/cover.jpg",
         "cover_img": "/assets/img/how-much-does-a-piano-cost/cover.jpg",
-        "keywords": "how much does a piano cost, piano prices, digital piano cost, upright piano cost, steinway piano cost",
+        "keywords": "how much does a piano cost, piano price, how much does a new piano cost, average piano cost, how much for a piano, cost of a piano, piano pricing, digital piano cost, upright piano cost, steinway piano cost",
         "toc": [
             ("price-by-type", "Price Ranges by Type"),
             ("digital-pianos", "Digital Pianos and Keyboards"),
@@ -446,6 +446,33 @@ FAQ_ARTICLES = [
             ("How many keys on a piano are white and how many are black", "A standard piano has 52 white keys and 36 black keys, making 88 in total. The black keys sit in repeating groups of two and three, which is what lets you find any note by touch and sight."),
             ("How many notes on a piano can you play at once", "Technically you can press several keys together, and a full chord uses three or more. In practice, hands can comfortably hold around ten notes at once, though most music uses far fewer."),
             ("Is 61 keys enough to learn piano", "Yes, for the first year or two. A 61-key keyboard covers five octaves and handles beginner pieces, chords and most popular songs. Move to 88 keys when your repertoire needs the extreme low or high notes."),
+        ],
+    },
+    {
+        "slug": "are-kawai-pianos-good",
+        "title": "Are Kawai Pianos Good?",
+        "desc": "Are Kawai pianos good? Explore Kawai build quality, warm tone, responsive action, the K300 and upright range, digital models, prices and how Kawai compares with Yamaha.",
+        "full_h1": "Are Kawai Pianos Good? (Quality, Tone, Prices and Kawai vs Yamaha)",
+        "seo_title": "Are Kawai Pianos Good? Quality, Tone and Value Explained",
+        "body_file": "_are_kawai_pianos_good_body.html",
+        "keywords": "kawai piano price, kawai k300, kawai vs yamaha, kawai digital piano, kawai upright piano, best kawai digital piano for beginners",
+        "date": "2026-11-24",
+        "read": "9 min read",
+        "toc": [
+            ("short-answer", "Are Kawai Pianos Good?"),
+            ("touch", "Action and Touch"),
+            ("tone", "Warm Tone"),
+            ("upright", "Upright Models"),
+            ("digital", "Digital Pianos"),
+            ("vs-yamaha", "Kawai vs Yamaha"),
+            ("price", "Kawai Piano Price"),
+            ("faq", "FAQ"),
+            ("conclusion", "Bottom Line"),
+        ],
+        "faqs": [
+            ("Are Kawai pianos good for beginners", "Yes. Kawai builds reliable instruments at several price points, so there are good options for a first piano. Look for at least 88 weighted keys on a digital model, or a taller used upright that has been inspected by a technician."),
+            ("Is Kawai better than Yamaha", "Neither is better in every way. Kawai tends to sound warmer and feel slightly heavier, while Yamaha is often brighter and easier to resell. Both are excellent, so the right choice is the one whose touch and tone you prefer."),
+            ("How long do Kawai pianos last", "A well cared for Kawai acoustic piano can serve several generations. Solid wooden framing, a rigid plate and carbon fibre action parts make them unusually stable. Regular tuning and sensible climate control protect that lifespan."),
         ],
     },
 ]
@@ -1388,6 +1415,8 @@ FIRST_PUBLISHED = {
     "/blog/do-you-need-88-keys-on-a-piano/": "2026-11-23",
     "/blog/how-much-do-piano-lessons-cost/": "2026-11-23",
     "/video-tutorial/how-to-play-erika-on-piano/": "2026-11-23",
+    # 2026-11-24 batch
+    "/faq/are-kawai-pianos-good/": "2026-11-24",
 }
 
 def _sitemap_priority(u):
