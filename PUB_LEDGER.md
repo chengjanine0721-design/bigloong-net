@@ -209,9 +209,14 @@
 | slug | 类型 | 嵌入关键词（B列） | 状态码 | F栏 | A栏URL | 封面图 |
 |---|---|---|---|---|---|---|
 | how-much-does-a-piano-cost | blog | how much does a piano cost, piano price, how much does a new piano cost, average piano cost, how much for a piano, cost of a piano, piano pricing（7个，正文已自然覆盖，meta keywords 已补全） | 200 | 11.24 ✓ | 完整URL ✓ | cover.jpg 存量已生成（159KB），今日无需重做 |
-| are-kawai-pianos-good | faq | kawai piano price, kawai k300, kawai vs yamaha, kawai digital piano, kawai upright piano, best kawai digital piano for beginners（6个） | 待验证 | 待回填 | 待回填 | 不需要（faq 类型） |
+| are-kawai-pianos-good | faq | kawai piano price, kawai k300, kawai vs yamaha, kawai digital piano, kawai upright piano, best kawai digital piano for beginners（6个） | 200 | 11.24 ✓ | 完整URL ✓ | 不需要（faq 类型） |
 
 - **筛表**：MGo4JP 中 E=11.24 且 F 空的主行 = 第13行(blog) + 第45行(faq)，无补充关键词行。
 - **重要判定**：第13行 A 列 `how-much-does-a-piano-cost` 是 11.19 已上线的存量页（FIRST_PUBLISHED=2026-11-19），B 列关键词就是钢琴价格，与现有正文完全同主题。按「不删除已上线页面」边界，保留正文与封面不覆盖，仅补全 keywords meta、验证 200 后回填 F/A，lastmod 保持 11-19 不变。
 - **第45行修正**：A 列误写 `/blog/are-kawai-pianos-good`，G 列为 faq，按规范落地为 `/faq/are-kawai-pianos-good/`，A 栏回填真实 /faq/ 完整 URL。
 - **正文**：新建 `_are_kawai_pianos_good_body.html`，FAQ 型问答结构 + FAQPage + Article + BreadcrumbList schema，canonical/meta/keywords 齐全，作者 Alice Baker；参考 H 列两篇 Kawai 评测（Summerhays、Mark Goodwin 2026）。
+- **FIRST_PUBLISHED**：仅新增 `/faq/are-kawai-pianos-good/`: 2026-11-24；钢琴价格页 lastmod 保持 2026-11-19 不变。
+- **push**：commit `1f30049`，b54ca99..1f30049 → main，Cloudflare 约 30 秒部署生效。
+- **验证**：2 URL + sitemap + cover.jpg 均 200；线上 FAQ title/FAQPage 正确，sitemap 含 lastmod=2026-11-24。
+- **回填**：F13/F45=11.24（cells-set @ 格式），A13/A45=完整 URL（csv-put），逐格读回核对无误（revision 416）。
+- **飞书**：bot 身份推送当日 URL 清单给程静（open_id ou_f03eaff539ac11b035b93197e723ef45）。
