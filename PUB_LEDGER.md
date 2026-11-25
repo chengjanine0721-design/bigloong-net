@@ -220,3 +220,21 @@
 - **验证**：2 URL + sitemap + cover.jpg 均 200；线上 FAQ title/FAQPage 正确，sitemap 含 lastmod=2026-11-24。
 - **回填**：F13/F45=11.24（cells-set @ 格式），A13/A45=完整 URL（csv-put），逐格读回核对无误（revision 416）。
 - **飞书**：bot 身份推送当日 URL 清单给程静（open_id ou_f03eaff539ac11b035b93197e723ef45）。
+
+## 2026-11-25（3 篇，blog×2 + video-tutorial×1）
+
+| slug | 类型 | 嵌入关键词（B列） | 状态码 | F栏 | A栏URL | 封面图 |
+|---|---|---|---|---|---|---|
+| best-beginner-keyboard | blog | best piano for beginners, recommended keyboards for beginners, electronic piano for beginners, beginner keyboard, good beginner keyboard, best cheap keyboard piano, best music keyboard, 88 key keyboard for beginners（8个） | 200 | 11.25 ✓ | 完整URL ✓ | cover.jpg 已生成 186.5KB，size_ok/bytes_ok=True |
+| best-easy-piano-songs-for-beginners | blog | easiest songs on piano for beginners, easy things to play on piano, easy keyboard songs, what are easy songs to play on the piano, easy popular songs to play on piano for beginners, basic piano song, easy piano songs to learn, how to play simple piano songs（8个） | 200 | 11.25 ✓ | 完整URL ✓ | cover.jpg 已生成 173.7KB，size_ok/bytes_ok=True |
+| how-to-play-runaway-on-piano | video-tutorial | how to play runaway on piano（1个，标题/H1/desc/keywords/steps 自然覆盖） | 200 | 11.25 ✓ | 完整URL ✓ | 不需要（video-tutorial 类型） |
+
+- **筛表**：MGo4JP 中 E=11.25 且 F 空的主行 = 第14行(blog) + 第15行(blog) + 第75行(video-tutorial)，无补充关键词行。
+- **路径修正**：第75行 G=video-tutorial 但 A 列误写 `/blog/`，按规范落地 `/video-tutorial/how-to-play-runaway-on-piano/`，A 栏回填真实完整 URL。
+- **正文**：新建 `_best_beginner_keyboard_body.html` / `_best_easy_piano_songs_body.html`（Article+FAQPage+BreadcrumbList schema，canonical/meta/keywords，作者 Alice Baker，参考 H 列 pianoin21days.com 两篇）；Runaway 用分步教学 + VideoObject + Article + BreadcrumbList（视频生成器本次补加 Article schema）。
+- **封面**：2 篇 blog 均 ImageGen 底图（1536x1024，主题钢琴键盘/简易琴曲）+ make_cover.py 叠字，`--inpaint 1070,725,1200,800` 擦除右下角 AI生成/WORK BUDDY 水印；目检文字清晰无截断，size_ok/bytes_ok 均 True。
+- **FIRST_PUBLISHED**：新增 3 条，均 2026-11-25。
+- **push**：commit `a6238a1`，5090d2a..a6238a1 → main，Cloudflare 约 30 秒部署生效。
+- **验证**：3 URL + 2 cover.jpg + sitemap 均 200；sitemap 含 3 条 lastmod=2026-11-25。
+- **回填**：F14/F15/F75=11.25（cells-set 带 number_format @ 保尾零），A14/A15/A75=完整 URL（cells-set），逐格读回核对无误（revision 417）。
+- **飞书**：bot 身份推送当日 URL 清单给程静（open_id ou_f03eaff539ac11b035b93197e723ef45）。
