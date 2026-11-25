@@ -362,6 +362,66 @@ POSTS = [
             ("Are piano lessons worth the cost", "For most learners, yes. A good teacher corrects technique early, prevents bad habits and keeps you motivated, which speeds progress and reduces frustration."),
         ],
     },
+    {
+        "slug": "best-beginner-keyboard",
+        "cat": "Buying Guide",
+        "title": "Best Beginner Keyboard: How to Choose Your First One",
+        "desc": "Find the best beginner keyboard for your goals and budget. Compare 88-key weighted pianos, portable keyboards and cheap options, and learn what really matters when you start.",
+        "emoji": "\U0001F3B9",
+        "c1": "#FFF0C9", "c2": "#E7E5F6",
+        "date": "2026-11-25",
+        "read": "10 min read",
+        "seo_title": "Best Beginner Keyboard in 2026: A Simple Buying Guide",
+        "full_h1": "Best Beginner Keyboard (How to Choose Your First One)",
+        "body_file": "_best_beginner_keyboard_body.html",
+        "image": "/assets/img/best-beginner-keyboard/cover.jpg",
+        "cover_img": "/assets/img/best-beginner-keyboard/cover.jpg",
+        "keywords": "best beginner keyboard, best piano for beginners, recommended keyboards for beginners, electronic piano for beginners, beginner keyboard, good beginner keyboard, best cheap keyboard piano, best music keyboard, 88 key keyboard for beginners",
+        "toc": [
+            ("what-matters", "What Matters"),
+            ("key-count", "How Many Keys"),
+            ("weighted-keys", "Weighted vs Touch-Sensitive"),
+            ("sounds", "Sounds and Extras"),
+            ("budget", "What to Spend"),
+            ("space", "Space and Portability"),
+            ("try-before", "How to Test in Store"),
+            ("faq", "FAQ"),
+            ("conclusion", "The Bottom Line"),
+        ],
+        "faqs": [
+            ("What is the best piano for beginners on a budget", "A touch-sensitive 61-key instrument with a sturdy stand is the best value for most beginners. If you can stretch to weighted keys, do so, but do not let the budget stop you from starting. Consistent practice matters more than the instrument in the first year."),
+            ("Is an 88 key keyboard necessary for a beginner", "No. An 88 key keyboard for beginners is ideal for classical music and full sheet music, but 61 keys cover most beginner pieces. Choose 88 keys if you want a long-term instrument; choose 61 if space and portability matter more right now."),
+            ("Are recommended keyboards for beginners worth paying more for", "Only when the extra money buys better touch, a steadier build or headphones practice. Paying for hundreds of built-in sounds is rarely worth it. A responsive keyboard that you enjoy playing is the feature that actually accelerates learning."),
+        ],
+    },
+    {
+        "slug": "best-easy-piano-songs-for-beginners",
+        "cat": "Beginner Guide",
+        "title": "Best Easy Piano Songs for Beginners",
+        "desc": "Discover easy piano songs for beginners that sound great with just a few notes. Learn which tunes to start with, how to practise them and how to build confidence fast.",
+        "emoji": "\U0001F3B5",
+        "c1": "#E7E5F6", "c2": "#FFF0C9",
+        "date": "2026-11-25",
+        "read": "11 min read",
+        "seo_title": "Best Easy Piano Songs for Beginners (8 Simple Tunes)",
+        "full_h1": "Best Easy Piano Songs for Beginners (8 Simple Tunes)",
+        "body_file": "_best_easy_piano_songs_body.html",
+        "image": "/assets/img/best-easy-piano-songs-for-beginners/cover.jpg",
+        "cover_img": "/assets/img/best-easy-piano-songs-for-beginners/cover.jpg",
+        "keywords": "best easy piano songs for beginners, easiest songs on piano for beginners, easy things to play on piano, easy keyboard songs, what are easy songs to play on the piano, easy popular songs to play on piano for beginners, basic piano song, easy piano songs to learn, how to play simple piano songs",
+        "toc": [
+            ("what-makes-easy", "What Makes a Song Easy"),
+            ("eight-songs", "8 Songs to Start With"),
+            ("practice", "How to Practise"),
+            ("faq", "FAQ"),
+            ("conclusion", "Start Today"),
+        ],
+        "faqs": [
+            ("What are the easiest songs on piano for complete beginners", "\"Hot Cross Buns\", \"Mary Had a Little Lamb\" and \"Ode to Joy\" are the safest starting points. Each uses five notes or fewer, a steady rhythm and a range that sits comfortably around middle C. You can play them within a first lesson."),
+            ("How do I find easy piano songs to learn on my own", "Choose a tune you already know well, then look for a simplified arrangement in C or G major. Familiar melodies are easier to learn because your ear tells you when a note is wrong. Avoid dense arrangements with many chords until your coordination improves."),
+            ("Can adults learn these easy keyboard songs quickly", "Yes. Adults usually understand the patterns faster than children, even if their fingers take a little longer to settle. Twenty minutes a day on two or three of these songs is enough to play them smoothly within a couple of weeks."),
+        ],
+    },
 ]
 
 FAQS = [
@@ -616,6 +676,26 @@ VIDEOS = [
         "embeds": [
             {"id": "pXj-V8W9p1M", "label": "Erika Piano (Easy Version)",
              "desc": "A short, easy-to-follow piano version you can play along with.", "ratio": "9/16"},
+        ],
+    },
+    {
+        "slug": "how-to-play-runaway-on-piano",
+        "title": "How to Play Runaway on Piano",
+        "desc": "Learn how to play Runaway on piano with a simple right-hand melody, easy left hand chords and a steady rhythm. Follow clear steps and play along at your own pace.",
+        "keywords": "how to play runaway on piano, runaway piano tutorial, runaway piano notes, runaway piano easy, learn runaway piano",
+        "duration": "8:20",
+        "emoji": "\U0001F3B9",
+        "c1": "#FFF0C9", "c2": "#E7E5F6",
+        "date": "2026-11-25",
+        "steps": [
+            "Find the key centre first. Most easy arrangements of Runaway sit around A minor or C major, so start with your right thumb on A and get comfortable with the shape of the white keys before you learn any notes.",
+            "Learn the recurring right hand motif in two bar chunks. Play the first phrase slowly, note by note, and say each note name aloud until the pattern feels automatic, then move to the next phrase.",
+            "Add a simple left hand root note on the first beat of every bar: A, F, C and G. Keep it low, steady and relaxed so it supports the melody without overpowering it.",
+            "Turn those roots into basic chords once the notes are secure: A minor, F major, C major and G major. Play them together with the right hand melody at a slow tempo.",
+            "Practise hands separately before putting them together. Use a metronome set slower than you think you need, and only increase the speed when three clean repeats in a row feel easy.",
+            "Shape the dynamics. Play the quiet verses softly and let the chorus open up, using the weight of your arm rather than pressing harder with your fingers.",
+            "Practise the transitions between sections, especially the move from verse to chorus. Loop just the two bars around each change until the hands know where to go without thinking.",
+            "Play the whole arrangement from start to finish once a day. Record yourself to catch uneven notes, then fix the hardest bar first rather than replaying the whole piece.",
         ],
     },
 ]
@@ -1204,12 +1284,21 @@ def related_video_cards(slug, n=3):
 def build_video_detail(v):
     slug = v["slug"]
     steps = "".join(f'<li>{s}</li>' for s in v["steps"])
+    vdate = v.get("date", "2026-11-19")
     ld_obj = {"@context": "https://schema.org", "@type": "VideoObject",
               "name": v["title"], "description": v["desc"],
-              "uploadDate": "2026-11-19", "duration": "PT6M",
+              "uploadDate": vdate, "duration": "PT6M",
               "thumbnailUrl": "https://" + SITE + "/assets/css/placeholder.jpg"}
+    article_obj = {"@context": "https://schema.org", "@type": "Article",
+                   "headline": v["title"], "description": v["desc"],
+                   "author": {"@type": "Person", "name": AUTHOR, "image": "https://" + SITE + "/assets/img/author-avatar.png"},
+                   "publisher": {"@type": "Organization", "name": "Bigloong"},
+                   "datePublished": vdate, "dateModified": vdate,
+                   "mainEntityOfPage": "https://" + SITE + "/video-tutorial/" + slug + "/"}
     crumbs = [("Home", "/"), ("Video Tutorial", "/video-tutorial/"), (v["title"], None)]
-    ld = '<script type="application/ld+json">' + json.dumps(ld_obj, ensure_ascii=False) + '</script>' + ld_breadcrumb(crumbs)
+    ld = ('<script type="application/ld+json">' + json.dumps(article_obj, ensure_ascii=False) + '</script>'
+          + '<script type="application/ld+json">' + json.dumps(ld_obj, ensure_ascii=False) + '</script>'
+          + ld_breadcrumb(crumbs))
     if v.get("embeds"):
         def yt(e):
             return (f'<iframe src="https://www.youtube.com/embed/{e["id"]}" '
@@ -1417,6 +1506,10 @@ FIRST_PUBLISHED = {
     "/video-tutorial/how-to-play-erika-on-piano/": "2026-11-23",
     # 2026-11-24 batch
     "/faq/are-kawai-pianos-good/": "2026-11-24",
+    # 2026-11-25 batch
+    "/blog/best-beginner-keyboard/": "2026-11-25",
+    "/blog/best-easy-piano-songs-for-beginners/": "2026-11-25",
+    "/video-tutorial/how-to-play-runaway-on-piano/": "2026-11-25",
 }
 
 def _sitemap_priority(u):
