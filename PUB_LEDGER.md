@@ -1,5 +1,23 @@
 # bigloong.net 发布台账
 
+## 2026-11-26 每日发布（2 篇：blog×1 + faq×1）
+
+| 项 | 内容 |
+| --- | --- |
+| 日期 | 2026-11-26（E 列计划发布日 = 11.26 且 F 列空） |
+| 表格行 | row 16（blog）、row 46（faq，含 row 47-51 补充关键词） |
+| 1 | `/blog/piano-keyboard-layout/` — 完整 URL https://bigloong.net/blog/piano-keyboard-layout/ |
+| 1 关键词 | keys on the piano with notes / piano keyboard notes chart / key of the piano / keys on a piano / piano keyboard diagram / picture of full piano keyboard / letters on a piano keyboard / 88 key keyboard keys / piano keys labeled with notes |
+| 1 状态 | URL 200，封面 cover.jpg 200，F16=11.26，A16=完整 URL，G16=已发布 |
+| 1 封面 | ImageGen 底图 + make_cover.py 叠字（`--inpaint 1070,725,1200,800` 去水印），首版标题截断后缩短重生成；1200x800 / 182.9KB，size_ok=True bytes_ok=True |
+| 2 | `/faq/how-many-keys-are-on-a-piano/` — 完整 URL https://bigloong.net/faq/how-many-keys-are-on-a-piano/ |
+| 2 关键词 | how many keys on full piano / how many keys on a standard piano / number of keys on piano / how many keys on piano keyboard / how many keys on a full size piano / how many keys are in a standard piano |
+| 2 状态 | URL 200，F46=11.26，A46=完整 URL（原 A 列误写 /blog/，按 H 列 faq 落地真实 /faq/ 路径），G46=已发布 |
+| 2 封面 | faq 类型不需要封面；沿用渐变封面块 |
+| 结构化数据 | 两篇均含 Article + FAQPage + BreadcrumbList；blog 另有 canonical / og:image / keywords，cover_img 已接入 build.py |
+| sitemap | FIRST_PUBLISHED 新增两条 2026-11-26，线上 sitemap.xml 含 2 条 lastmod=2026-11-26 |
+| push | 内容 commit f740420（b6f4bc7..f740420），Cloudflare 首次检查 in_progress，约 55 秒后全部 200 |
+
 ## 2026-11-25 补充 20：表格新增「状态」列回填规则
 
 - 用户要求：发布页面后，除回填 A 列 URL、F 列发布日，还要把 G 列「状态」改成「已发布」。
