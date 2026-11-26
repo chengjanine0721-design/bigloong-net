@@ -422,6 +422,39 @@ POSTS = [
             ("Can adults learn these easy keyboard songs quickly", "Yes. Adults usually understand the patterns faster than children, even if their fingers take a little longer to settle. Twenty minutes a day on two or three of these songs is enough to play them smoothly within a couple of weeks."),
         ],
     },
+    {
+        "slug": "piano-keyboard-layout",
+        "cat": "Beginner Guide",
+        "title": "Piano Keyboard Layout Explained",
+        "desc": "Understand the piano keyboard layout: white keys, black-key groups, note names, octaves and a simple piano keyboard notes chart for beginners.",
+        "emoji": "\U0001F3B9",
+        "c1": "#FFF0C9", "c2": "#E7E5F6",
+        "date": "2026-11-26",
+        "read": "12 min read",
+        "seo_title": "Piano Keyboard Layout Explained: Keys, Notes and Chart",
+        "full_h1": "Piano Keyboard Layout Explained (Keys, Notes and Chart)",
+        "body_file": "_piano_keyboard_layout_body.html",
+        "image": "/assets/img/piano-keyboard-layout/cover.jpg",
+        "cover_img": "/assets/img/piano-keyboard-layout/cover.jpg",
+        "keywords": "keys on the piano with notes, piano keyboard notes chart, key of the piano, keys on a piano, piano keyboard diagram, picture of full piano keyboard, letters on a piano keyboard, 88 key keyboard keys, piano keys labeled with notes",
+        "toc": [
+            ("what-is-the-layout", "The Basic Layout"),
+            ("white-keys", "White Keys"),
+            ("black-keys", "Black Keys"),
+            ("finding-notes", "Finding Notes"),
+            ("octaves", "Octaves and Range"),
+            ("diagram", "Notes Chart"),
+            ("practice", "Five-Minute Practice"),
+            ("faq", "FAQ"),
+            ("conclusion", "The Bottom Line"),
+        ],
+        "faqs": [
+            ("How do I find notes on the piano quickly", "Use the black-key groups as landmarks. The two-black group tells you where C, D and E are; the three-black group tells you where F, G, A and B are. Middle C is the C immediately left of the central group of two, so you can reach any note without counting from the end."),
+            ("What is the difference between a piano keyboard and a musical keyboard", "The layout is identical: white keys, black keys and the same repeating note pattern. A piano has 88 weighted keys and hammers that strike strings. Many electronic keyboards have 61 or 76 unweighted or touch-sensitive keys, so the range and feel differ but the positions of notes stay the same."),
+            ("Do I need to memorise every key name before I play a song", "No. Most first songs use five notes around middle C. Learn those few positions, play the melody, then add more notes as your pieces require. Note knowledge grows fastest when it is attached to music you actually want to play."),
+            ("Are the black keys sharps or flats", "Both, depending on context. The key between C and D is C sharp when you raise C, and D flat when you lower D. It is the same physical key either way; the notation changes to fit the key signature of the piece."),
+        ],
+    },
 ]
 
 FAQS = [
@@ -533,6 +566,31 @@ FAQ_ARTICLES = [
             ("Are Kawai pianos good for beginners", "Yes. Kawai builds reliable instruments at several price points, so there are good options for a first piano. Look for at least 88 weighted keys on a digital model, or a taller used upright that has been inspected by a technician."),
             ("Is Kawai better than Yamaha", "Neither is better in every way. Kawai tends to sound warmer and feel slightly heavier, while Yamaha is often brighter and easier to resell. Both are excellent, so the right choice is the one whose touch and tone you prefer."),
             ("How long do Kawai pianos last", "A well cared for Kawai acoustic piano can serve several generations. Solid wooden framing, a rigid plate and carbon fibre action parts make them unusually stable. Regular tuning and sensible climate control protect that lifespan."),
+        ],
+    },
+    {
+        "slug": "how-many-keys-are-on-a-piano",
+        "title": "How Many Keys Are on a Piano?",
+        "desc": "How many keys are on a standard or full-size piano? Get the 88-key answer, the 52 white and 36 black breakdown, and guidance on 61 vs 76 vs 88 keys.",
+        "full_h1": "How Many Keys Are on a Piano? (Standard vs Full Size)",
+        "seo_title": "How Many Keys Are on a Piano? 88-Key Standard Explained",
+        "body_file": "_how_many_keys_are_on_a_piano_body.html",
+        "keywords": "how many keys on full piano, how many keys on a standard piano, number of keys on piano, how many keys on piano keyboard, how many keys on a full size piano, how many keys are in a standard piano",
+        "date": "2026-11-26",
+        "read": "8 min read",
+        "toc": [
+            ("short-answer", "Short Answer"),
+            ("standard-vs-full", "Standard vs Full Size"),
+            ("counting-keys", "How Keys Are Counted"),
+            ("keyboards", "61, 76 and 88 Keys"),
+            ("faq", "FAQ"),
+            ("conclusion", "Bottom Line"),
+        ],
+        "faqs": [
+            ("How many keys are on a standard piano", "A standard full-size piano has 88 keys: 52 white and 36 black. Some portable digital instruments are marketed as standard with 61 or 76 keys, so check the specification if the exact count matters."),
+            ("How many keys on a full size piano are white and how many are black", "There are 52 white keys and 36 black keys. The black keys sit in repeating groups of two and three, which makes note names easy to find by sight or touch."),
+            ("How many keys are in a standard piano keyboard compared with a MIDI controller", "A piano has 88 keys. MIDI controllers commonly come in 25, 49, 61, 76 or 88-key versions. Smaller models are production tools rather than piano replacements; an 88-key controller matches the full playing range."),
+            ("Is 88 keys necessary for a beginner", "No. A 61-key keyboard is enough for early lessons, chords and most popular songs. Choose 88 keys if you want one instrument to grow into, play classical repertoire, or enjoy weighted keys and a full sustain range."),
         ],
     },
 ]
@@ -1510,6 +1568,9 @@ FIRST_PUBLISHED = {
     "/blog/best-beginner-keyboard/": "2026-11-25",
     "/blog/best-easy-piano-songs-for-beginners/": "2026-11-25",
     "/video-tutorial/how-to-play-runaway-on-piano/": "2026-11-25",
+    # 2026-11-26 batch
+    "/blog/piano-keyboard-layout/": "2026-11-26",
+    "/faq/how-many-keys-are-on-a-piano/": "2026-11-26",
 }
 
 def _sitemap_priority(u):
