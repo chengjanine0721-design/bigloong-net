@@ -1,5 +1,28 @@
 # bigloong.net 发布台账
 
+## 2026-11-27 每日发布（3 篇：blog×2 + video-tutorial×1）
+
+| 项 | 内容 |
+| --- | --- |
+| 日期 | 2026-11-27（E 列计划发布日 = 11.27 且 F 列空） |
+| 表格行 | row 17（blog，含 row 18-22 补充关键词）、row 23（blog，含 row 24-28 补充关键词）、row 76（video-tutorial，无补充关键词） |
+| 1 | `/blog/learn-all-about-the-g-major-piano-scale/` — 完整 URL https://bigloong.net/blog/learn-all-about-the-g-major-piano-scale/ |
+| 1 关键词 | g major scale piano / major scale key of g / scale in g major / g scale / g major scale music / notes in g major |
+| 1 状态 | URL 200，F17=11.27，A17=完整 URL，G17=已发布 |
+| 1 封面 | ImageGen 底图（1536x1024）+ make_cover.py 叠字，`--inpaint 1080,735,1200,800` 去右下水印；1200x800 / 183.6KB，size_ok=True bytes_ok=True |
+| 2 | `/blog/what-is-harmony-in-music/` — 完整 URL https://bigloong.net/blog/what-is-harmony-in-music/ |
+| 2 关键词 | what is harmony in music / define harmony / harmony music / harmony meaning / harmony defined / harmony in music |
+| 2 状态 | URL 200，F23=11.27，A23=完整 URL，G23=已发布 |
+| 2 封面 | ImageGen 底图 + make_cover.py 叠字，`--inpaint 1080,735,1200,800` 去右下水印；1200x800 / 191.0KB，size_ok=True bytes_ok=True |
+| 3 | `/video-tutorial/how-to-play-on-piano-jingle-bells/` — 完整 URL https://bigloong.net/video-tutorial/how-to-play-on-piano-jingle-bells/ |
+| 3 关键词 | how to play on piano jingle bells（标题/H1/desc/keywords/steps 自然覆盖） |
+| 3 状态 | URL 200，F76=11.27，A76=完整 URL（原 A 列误写 /blog/，按 H 列 video-tutorial 落地真实路径），G76=已发布 |
+| 3 封面 | video-tutorial 类型不需要封面；分步教学 + VideoObject |
+| 结构化数据 | 两篇 blog 均 Article + FAQPage + BreadcrumbList + canonical + og:image + keywords；video 页 Article + VideoObject + BreadcrumbList；作者 Alice Baker |
+| sitemap | FIRST_PUBLISHED 新增三条 2026-11-27，线上 sitemap.xml 含 3 条 lastmod=2026-11-27 |
+| push | 内容 commit `5e1f3c8`（6df00e3..5e1f3c8），约 35 秒后 3 URL + 2 cover + sitemap 全部 200 |
+| 回填 | 9 格一次批量写入（F17/F23/F76、A17/A23/A76、G17/G23/G76），revision 429，逐行读回核对无误 |
+
 ## 2026-11-26 每日发布（2 篇：blog×1 + faq×1）
 
 | 项 | 内容 |
